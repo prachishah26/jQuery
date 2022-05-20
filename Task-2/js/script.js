@@ -4,6 +4,7 @@ $(document).ready(function(){
     $(".down").first().hide()
 
     $(".btn").click(function(){
+        $("p").hide()
         $(this).next().toggle()
         $(this).find("i").toggle()
     })
