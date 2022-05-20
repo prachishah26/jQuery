@@ -4,7 +4,8 @@ $(document).ready(function(){
     $(".down").first().hide()
 
     $(".btn").click(function(){
-        $("p").hide()
+        $(this).parent().siblings().find("p").slideUp()
+
         $(this).next().toggle()
         $(this).find("i").toggle()
     })
