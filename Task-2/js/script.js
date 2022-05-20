@@ -4,7 +4,7 @@ $(document).ready(function(){
     $(".down").first().hide();
 
     $(".btn").click(function(){                   //on button click...
-        $(this).parent().siblings().find("p").slideUp();  
+        $(this).parent().siblings().find("p").slideUp(200);  
         $(this).parent().siblings().find(".down").show(); 
         $(this).parent().siblings().find(".up").hide();
 
