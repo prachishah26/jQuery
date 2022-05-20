@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(lightblue,lightgray);
+}
+.lower-box{
+    height: 50vh;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.lower-box p{
+    text-align: justify;
+}
