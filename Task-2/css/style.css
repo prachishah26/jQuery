@@ -1,0 +1,14 @@
+body{
+    height: 100vh;
+    background: linear-gradient(lightblue,	#ccc);
+}
+
+.btn{
+    text-align: left!important;
+}
+.content{
+    border: 1px solid gray;
+}
+p{
+    text-align: justify;
+}
