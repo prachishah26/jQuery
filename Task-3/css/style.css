@@ -31,7 +31,7 @@ h4{
 }
 .dots{
     bottom: 3vh;
-    left: 40%;
+    left: 44%;
 }
 .dots i{
     color: white;
@@ -42,7 +42,6 @@ img{
     height: 100%;
     width: 100%;
 }
-
 .on-auto{
     top: 3vh;
     left: 0%;

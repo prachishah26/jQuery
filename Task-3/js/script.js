@@ -1,41 +1,49 @@
-function icon_color(){
+function icon_color() {
     var i = $("img:visible").index();
-        $(".slide-icon").css("color", "white").eq(i).css("color", "red");
-        $(".heading h4").hide().eq(i).show()
+    $(".slide-icon").css("color", "white").eq(i).css("color", "red");
+    $(".heading h4").hide().eq(i).show()
 }
 
 $(document).ready(function () {
     var index = 0;
-    var start = setInterval(function(){
-        $("img").hide().eq(index).show().fadeOut(6500);
-        icon_color();
-        index += 1;
-        if(index > $("img").last().index()){
-            index = 0;
-        }
-    },4000)
+    var isStart = false;
+    var start
+    startSlider()
 
-    $(".on-auto").click(function(){
-        start = setInterval(function(){
-            $("img").hide().eq(index).show().fadeOut(6500);
-            icon_color();
-            index += 1;
-            if(index > $("img").last().index()){
-                index = 0;
-            }
-        },4000)
-        // start();
+    function startSlider() {
+        if(isStart == false){
+            start = setInterval(function () {
+                $("img").hide().eq(index).show().fadeOut(6500);
+                icon_color();
+                index += 1;
+                if (index > $("img").last().index()) {
+                    index = 0;
+                }
+            }, 4000)
+            isStart = true
+        }else{
+            console.log("Already started");
+        }
+    }
+
+    function stopSlider() {
+        clearInterval(start);
+        isStart = false
+    }
+
+    $(".on-auto").click(function () {
+        startSlider()
     })
-    
-    $(".pause").click(function(){
+
+    $(".pause").click(function () {
         $("img").hide().eq(index).show();
         icon_color()
-        clearInterval(start);
+        stopSlider();
     })
 
     $("img").hide().eq(0).show();
     $(".left-arrow").click(function () {
-        clearInterval(start);
+        stopSlider();
         $("img").hide().eq(index - 1).show();
         index -= 1;
         if (index <= $("img").first().index()) {
@@ -45,7 +53,7 @@ $(document).ready(function () {
     })
 
     $(".right-arrow").click(function () {
-        clearInterval(start);
+        stopSlider();
         $("img").hide().eq(index + 1).show();
         index += 1;
         if (index >= $("img").last().index()) {
@@ -55,7 +63,7 @@ $(document).ready(function () {
     })
 
     $(".slide-icon").click(function () {
-        clearInterval(start);
+        stopSlider();
         $(this).css("color", "red")
         $(this).siblings().css("color", "white");
         var icon = $(this).index()
