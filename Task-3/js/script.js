@@ -1,4 +1,5 @@
 function icon_color() {
+    //this function will make icons red and heading as per image, when respective image will change
     var i = $("img:visible").index();
     $(".slide-icon").css("color", "white").eq(i).css("color", "red");
     $(".heading h4").hide().eq(i).show()
@@ -11,6 +12,7 @@ $(document).ready(function () {
     startSlider()
 
     function startSlider() {
+        // this function will automatically slide the images..
         if(isStart == false){
             start = setInterval(function () {
                 $("img").hide().eq(index).show().fadeOut(6500);
@@ -27,15 +29,18 @@ $(document).ready(function () {
     }
 
     function stopSlider() {
+        // this function will stop images to slide automatically..
         clearInterval(start);
         isStart = false
     }
 
     $(".on-auto").click(function () {
+        //automatic slider button
         startSlider()
     })
 
     $(".pause").click(function () {
+        //pause button
         $("img").hide().eq(index).show();
         icon_color()
         stopSlider();
@@ -43,6 +48,7 @@ $(document).ready(function () {
 
     $("img").hide().eq(0).show();
     $(".left-arrow").click(function () {
+        //to go back
         stopSlider();
         $("img").hide().eq(index - 1).show();
         index -= 1;
@@ -53,6 +59,7 @@ $(document).ready(function () {
     })
 
     $(".right-arrow").click(function () {
+        //to go next
         stopSlider();
         $("img").hide().eq(index + 1).show();
         index += 1;
@@ -63,6 +70,7 @@ $(document).ready(function () {
     })
 
     $(".slide-icon").click(function () {
+        //icons for images
         stopSlider();
         $(this).css("color", "red")
         $(this).siblings().css("color", "white");
