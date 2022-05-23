@@ -1,0 +1,43 @@
+body{
+    height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(lightblue,#ccc);
+    overflow: hidden;
+}
+.box{
+    height: 50vh;
+}
+.fa-caret-left{
+    top: 45%;
+    left: 8px;
+    font-size: 80px;
+}
+.fa-caret-right{
+    top: 45%;
+    right: 8px;
+    font-size: 80px;
+}
+i{
+    font-size: 40px;
+    margin: 10px;
+    color: rgb(142, 79, 79);
+}
+h4{
+    width: 60%;
+    bottom: 8vh;
+    left: 20vw;
+    color: white;
+}
+.dots{
+    bottom: 3vh;
+    left: 40%;
+}
+.dots i{
+    color: white;
+    font-size: 20px;
+}
+img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
