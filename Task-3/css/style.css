@@ -5,7 +5,7 @@ body{
     overflow: hidden;
 }
 .box{
-    height: 50vh;
+    height: 83vh;
 }
 .fa-caret-left{
     top: 45%;
@@ -21,6 +21,7 @@ i{
     font-size: 40px;
     margin: 10px;
     color: rgb(142, 79, 79);
+    
 }
 h4{
     width: 60%;
@@ -40,4 +41,16 @@ img{
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+.on-auto{
+    top: 3vh;
+    left: 0%;
+}
+.pause{
+    top: 3vh;
+    left: 92%;
+}
+i:hover{
+    cursor: pointer;
 }

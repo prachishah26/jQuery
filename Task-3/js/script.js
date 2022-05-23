@@ -4,18 +4,34 @@ function icon_color(){
         $(".heading h4").hide().eq(i).show()
 }
 
-
 $(document).ready(function () {
     var index = 0;
     var start = setInterval(function(){
-        $("img").hide().eq(index).show().fadeOut(5000);
+        $("img").hide().eq(index).show().fadeOut(6500);
         icon_color();
         index += 1;
         if(index > $("img").last().index()){
             index = 0;
         }
-    },3000)
-    start;
+    },4000)
+
+    $(".on-auto").click(function(){
+        start = setInterval(function(){
+            $("img").hide().eq(index).show().fadeOut(6500);
+            icon_color();
+            index += 1;
+            if(index > $("img").last().index()){
+                index = 0;
+            }
+        },4000)
+        // start();
+    })
+    
+    $(".pause").click(function(){
+        $("img").hide().eq(index).show();
+        icon_color()
+        clearInterval(start);
+    })
 
     $("img").hide().eq(0).show();
     $(".left-arrow").click(function () {
@@ -36,8 +52,8 @@ $(document).ready(function () {
             index = -1;
         }
         icon_color();
-        
     })
+
     $(".slide-icon").click(function () {
         clearInterval(start);
         $(this).css("color", "red")
@@ -46,6 +62,5 @@ $(document).ready(function () {
         $("img").hide().eq(icon).show()
         $(".heading h4").hide().eq(icon).show()
     })
-
 })
 
