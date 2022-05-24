@@ -1,0 +1,87 @@
+header{
+    padding-top: 15px;
+}
+.text-primary{
+    color: rgb(37, 37, 160)!important;
+}
+.logo{
+    height: 60px;
+    width: 100px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.search-btn{
+    width: 56px;
+    border: 1px solid lightgray;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.search-btn:hover{
+    cursor: pointer;
+}
+.search-btn i{
+    font-size: 25px;
+    color: rgb(37, 37, 160);
+}
+.search-bar{
+    width: 50vw;
+    padding:10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.search{
+    margin-left: 55px;
+}
+
+li{
+    list-style: none;
+    margin-right: 20px;
+}
+li:hover{
+    cursor: pointer;
+}
+ul{
+    padding-left: 0px;
+}
+
+.articles .box{
+    background-color: #F0F0F0;
+}
+
+.page-options li{
+    padding: 3px;
+}
+
+.page-options li:hover{
+   color: rgb(37, 37, 160);
+}
+
+.duration{
+    color: #707070	;
+}
+
+footer p{
+    margin-bottom: 0px;
+}
+
+input:focus{
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid lightgray !important;
+}
+
+.underline{
+    border-bottom: 2px solid rgb(37, 37, 160);;
+}
+a{
+    color: rgb(37, 37, 160)!important;
+}
+.suggestions .col-2 h5{
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+}
