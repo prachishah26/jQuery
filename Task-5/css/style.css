@@ -1,0 +1,32 @@
+body{
+    box-sizing: border-box;
+    background:linear-gradient(#431677,#0067ff);
+    min-height: 100vh;
+    color: white;
+}
+
+.time-box div{
+    border: 1px solid white;
+    width: 12vw;
+    height: 50px;
+    font-size: 30px;
+}
+.text-box div{
+    border: 1px solid white;
+    width: 12vw;
+    height: 50px;
+    font-size: 25px;
+}
+.input-time{
+    width: 50vw;
+   margin-left: 18vw;
+}
+.status{
+    border: 1px solid white;
+    width: 50vw;
+    margin-left: 18vw;
+}
+.btn{
+    width: 100px;
+    margin: 5px;
+}
