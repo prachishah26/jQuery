@@ -1,26 +1,35 @@
 $(document).ready(function () {
+    var isStart = false;
     $(".resume, .restart").hide();
     var count = 0
     $(".stop, .pause").attr("disabled", true);
 
     $(".start").click(function () {
-        stopwatch();
-        $(".stop, .pause").attr("disabled", false);
+        if (isStart == false) {
+            stopwatch();
+            $(this).attr("disabled", true);
+            $(".stop, .pause").attr("disabled", false);
+            isStart = true;
+        }
     })
     $(".pause").click(function () {
         ++count;
         clearInterval(start);
-        $(".resume").show();
+        $(".resume").show().attr("disabled", false);
         $(".start, .restart").hide();
         $(".pause").attr("disabled", true);
         set_status("Paused !!!")
         set_pausedtime(`${count}. Paused at ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds..`)
+        isStart=false;
     })
     $(".resume").click(function () {
-        $(".pause").attr("disabled", false);
-        get_timevalues();
-        stopwatch();
-        set_status("Running...!!!")
+        if(isStart == false){
+            $(this).attr("disabled", true);
+            $(".pause").attr("disabled", false);
+            get_timevalues();
+            stopwatch();
+            set_status("Running...!!!"); isStart=true;
+        }
     })
     $(".stop").click(function () {
         clearInterval(start);
@@ -30,6 +39,7 @@ $(document).ready(function () {
         $(".restart").attr("disabled", false);
         clear_pausedtime();
         set_pausedtime(`Stopped at ${hours} Hours, ${seconds} Seconds, ${minutes} Minutes..`)
+        isStart=false;
     })
     $(".restart").click(function () {
         $(this).attr("disabled", true);
@@ -41,7 +51,7 @@ $(document).ready(function () {
     })
     $(".reset").click(function () {
         clearInterval(start);
-        $(".start").show();
+        $(".start").show().attr("disabled", false);
         $(".resume, .restart").hide();
         $(".stop, .pause").attr("disabled", true);
         hours = 0; minutes = 0; seconds = 0; c_seconds = 0;
@@ -77,9 +87,9 @@ $(document).ready(function () {
         }, 10)
     }
     function addZero(n) {
-        if(n<=9){
-            return "0"+n
-        }else{
+        if (n <= 9) {
+            return "0" + n
+        } else {
             return n
         }
     }
