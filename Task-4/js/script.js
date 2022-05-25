@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $(".resume").hide();
     $(".restart").hide();
+    var sec = 0;
 
     $(".start").click(function () {
         if ($(".enter-time").val() == 0) {
@@ -13,8 +14,7 @@ $(document).ready(function () {
             $(".status").addClass("green-border").removeClass("red-border blue-border yello-border");
 
             $(".time-status").text("Running............ !!!");
-            var sec = parseInt($(".enter-time").val());
-
+            sec = parseInt($(".enter-time").val());
             var hours = Math.floor(sec / 3600);
             var minutes = Math.floor((sec - (hours * 3600)) / 60);
             var seconds = sec - (hours * 3600) - (minutes * 60);
@@ -36,10 +36,10 @@ $(document).ready(function () {
     })
 
     $(".restart").click(function () {
-        $(this).hide();
-        $(".start").show();
-        $(".start").attr("disabled", false);
-        $(".time-status").text("Enter time and hit start !");
+        $(this).attr("disabled",true);
+        // $(".start").show();
+        $(".pause").attr("disabled", false);
+        $(".time-status").text("Running...!!!");
         $(".time-status").addClass("yello").removeClass("red");
         $(".status").addClass("yello-border").removeClass("red-border");
         restart();
@@ -50,7 +50,7 @@ $(document).ready(function () {
             $(".time-status").text("Please enter seconds first !!!");
         }
         else {
-            $(".start").hide();
+            $(".start, .restart").hide();
             $(".resume").show();
             $(".resume").attr("disabled", false);
             $(".time-status").addClass("blue").removeClass("green red");
@@ -80,12 +80,12 @@ $(document).ready(function () {
     $(".reset").click(function () {
         $(".time-status").text("Enter time and hit start !")
         $(".restart, .resume").hide();
-        $(".start").attr("disabled", false);
-        $(".pause").attr('disabled', false);
+        $(".start, .pause").attr("disabled", false);
         $(".time-status").addClass("gray").removeClass("red blue green");
         $(".status").addClass("gray-border").removeClass("red-border blue-border green-border");
         reset();
     })
+
     var start;
     function countdown() {
         // this function will start countdown timer 
@@ -116,7 +116,6 @@ $(document).ready(function () {
                             c_seconds = 0;
                             clearInterval(start);
                             $(".time-status").text("Your time is finished now !!!!");
-
                         }
                     }
                 }
@@ -127,9 +126,8 @@ $(document).ready(function () {
             $(".hours").text(hours);
 
         }, 10)
-        return hours, minutes, seconds, c_seconds;
     }
-    function values() {
+    function get_values() {
         // this function will change the values of time in respective place 
         $(".c-seconds").text(c_seconds);
         $(".seconds").text(seconds);
@@ -140,17 +138,18 @@ $(document).ready(function () {
     function pause() {
         // this function will pause the timer 
         clearInterval(start);
-        values();
+        get_values();
         $(".time-status").text(`Paused at ${hours} Hours , ${minutes} Minutes, ${seconds} Seconds`);
     }
 
     function stop() {
         // this function will stop the timer and show restart button
         clearInterval(start);
-        values();
-        $(".restart").show();
+        get_values();
+        $(".restart").show().attr("disabled",false);
         $(".start").hide();
-        $(".time-status").text(`Stopped at ${hours} Hours , ${minutes} Minutes, ${seconds} Seconds`);
+        // $(".time-status").text(`Stopped at ${hours} Hours , ${minutes} Minutes, ${seconds} Seconds`);
+        setStatus(`Stopped at ${hours} Hours , ${minutes} Minutes, ${seconds} Seconds`)
     }
 
     function reset() {
@@ -161,25 +160,37 @@ $(document).ready(function () {
         minutes = 0;
         seconds = 0;
         c_seconds = 0;
-        values();
+        get_values();
         $(".enter-time").val(null);
     }
 
     function resume() {
         // this function will resume the timer 
         clearInterval(start);
-        values();
+        get_values();
         countdown();
     }
 
     function restart() {
         // this function will restart the timer 
         clearInterval(start);
-        hours = 0;
-        minutes = 0;
-        seconds = 0;
-        c_seconds = 0;
-        values();
-        $(".enter-time").val(null);
+        time_values(sec);
+    }
+
+    function setStatus(message) {
+        $(".time-status").text(message);
+    }
+
+    function time_values(sec) {
+        var hours = Math.floor(sec / 3600);
+        var minutes = Math.floor((sec - (hours * 3600)) / 60);
+        var seconds = sec - (hours * 3600) - (minutes * 60);
+        var c_seconds = 0;
+
+        $(".hours").text(hours);
+        $(".minutes").text(minutes);
+        $(".seconds").text(seconds);
+        $(".c_seconds").text(c_seconds);
+        countdown();
     }
 })
