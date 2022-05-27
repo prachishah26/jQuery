@@ -1,12 +1,20 @@
+body{
+    overflow: scroll;
+}
+
 .wizard-form{
     max-width: 80%;
 }
 .level{
-    height: 55vh;
+    /* height: 55vh; */
     background-color: hsl(0, 0%, 100%)	;
     padding: 20px;
     border: 1px solid gray;
+    /* overflow: scroll; */
 
+}
+.details{
+    height: 30vh;
 }
 
 .levels{
@@ -15,7 +23,7 @@
     
 }
 .levels h5{
-    width: 13vw;
+    width: 150px;
     margin-bottom: 0px;
     padding: 10px;
     background-color:rgb(225, 224, 224);
@@ -33,6 +41,7 @@
 table ,tr ,th ,td{
     border: 1px solid black;
 }
+
 table{
-    width: 100%;
+    width: 100vw;
 }

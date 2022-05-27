@@ -40,42 +40,48 @@
             <div class="level1 level">
                 <!-- level-1 starts  -->
                 <form>
-                    <div class="form-group row mt-4">
-                        <label for="fname" class="col-sm-2 col-form-label">First Name :</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fname" placeholder="First Name">
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <label for="lname" class="col-sm-2 col-form-label">Last Name :</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lname" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <fieldset class="form-group mt-4">
-                        <div class="row">
-                            <legend class="col-form-label col-sm-2 pt-0">Gender :</legend>
+                    <div class="details">
+                        <!-- first name  -->
+                        <div class="form-group row mt-4">
+                            <label for="fname" class="col-sm-2 col-form-label">First Name :</label>
                             <div class="col-sm-10">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                        value="Male" checked>
-                                    <label class="form-check-label" for="gridRadios1">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                        value="Female">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Female
-                                    </label>
-                                </div>
-
+                                <input type="text" class="form-control" id="fname" placeholder="First Name">
                             </div>
                         </div>
-                    </fieldset>
+                        <!-- last name  -->
+                        <div class="form-group row mt-4">
+                            <label for="lname" class="col-sm-2 col-form-label">Last Name :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <fieldset class="form-group mt-4">
+                            <!-- gender  -->
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Gender :</legend>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                            value="Male" checked>
+                                        <label class="form-check-label" for="gridRadios1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                            value="Female">
+                                        <label class="form-check-label" for="gridRadios2">
+                                            Female
+                                        </label>
+                                    </div>
 
-                    <div class="form-group row ms-auto">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="form-group row ms-auto mt-4">
+                        <!-- save & next button  -->
                         <div class="col-sm-12 d-flex justify-content-end">
                             <button type="button" class="btn btn-primary next">Save & Next</button>
                         </div>
@@ -87,33 +93,34 @@
             <div class="level2 level">
                 <!-- level-2 starts  -->
                 <form>
-
-                    <form>
+                    <div class="details">
                         <div class="form-group row mt-4">
+                            <!-- email id  -->
                             <label for="email" class="col-sm-2 col-form-label">Email :</label>
                             <div class="col-sm-10">
                                 <input type="text" id="email" class="form-control" placeholder="email@example.com">
                             </div>
                         </div>
                         <div class="form-group row mt-4">
+                            <!-- contact  -->
                             <label for="contact" class="col-sm-2 col-form-label">Contact :</label>
                             <div class="col-sm-10">
                                 <input type="phone" class="form-control" id="contact" placeholder="Contact">
                             </div>
                         </div>
-                    </form>
 
-
-                    <div class="form-group row mt-4">
-                        <label for="contact" class="col-sm-2 col-form-label">Date of Birth :</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="birthday" name="birthday" class="form-control"
-                                placeholder="DD/MM/YYYY">
+                        <div class="form-group row mt-4">
+                            <!-- birthday  -->
+                            <label for="contact" class="col-sm-2 col-form-label">Date of Birth :</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="birthday" name="birthday" class="form-control"
+                                    placeholder="DD/MM/YYYY">
+                            </div>
                         </div>
                     </div>
 
-
                     <div class="form-group row mt-4">
+                        <!-- buttons : prev & next  -->
                         <div class="col-sm-6 d-flex justify-content-start">
                             <button type="button" class="btn btn-primary prev">Previous</button>
                         </div>
@@ -127,49 +134,57 @@
             </div>
 
             <div class="level3 level">
+                <!-- level3 starts  -->
                 <form>
-                    <div class="form-group row mt-4">
-                        <label for="sports" class="col-sm-2 col-form-label">Favourite Sports :</label>
-                        <div class="col-sm-10">
-                            <select class="custom-select form-control mr-sm-2" id="sports">
-                                <option value="0" selected>Choose your favourite sport</option>
-                                <option value="Cricket">Cricket</option>
-                                <option value="Football">Football</option>
-                                <option value="Basketball">Basketball</option>
-                                <option value="vollyball">vollyball</option>
-                                <option value="Chess">Chess</option>
-                                <option value="Sudoku">Sudoku</option>
-                                <option value="Ludo">Ludo</option>
-                                <option value="Business-cards">Business-cards</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row mt-4">
-                        <label for="about" class="col-sm-2 col-form-label">About Yourself :</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="about" rows="3"
-                                placeholder="Tell us something about you..!"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-row align-items-center mt-4">
-                        <div class="col-auto my-1">
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                <label class="custom-control-label ms-2" for="customControlAutosizing">I agree to <a
-                                        href="">Terms and conditions</a> </label>
+                    <div class="details">
+                        <div class="form-group row mt-4">
+                            <!-- sports  -->
+                            <label for="sports" class="col-sm-2 col-form-label">Favourite Sports :</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select form-control mr-sm-2" id="sports">
+                                    <option value="0" selected>Choose your favourite sport</option>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Basketball">Basketball</option>
+                                    <option value="vollyball">vollyball</option>
+                                    <option value="Chess">Chess</option>
+                                    <option value="Sudoku">Sudoku</option>
+                                    <option value="Ludo">Ludo</option>
+                                    <option value="Business-cards">Business-cards</option>
+                                </select>
                             </div>
                         </div>
+    
+    
+                        <div class="form-group row mt-4">
+                            <!-- about yourself  -->
+                            <label for="about" class="col-sm-2 col-form-label">About Yourself :</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="about" rows="3"
+                                    placeholder="Tell us something about you..!"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="form-row align-items-center mt-4"> 
+                            <!-- t & c  -->
+                            <div class="col-auto my-1">
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="checkbox">
+                                    <label class="custom-control-label ms-2" for="checkbox">I agree to <a href="">Terms and
+                                            conditions</a> </label>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>   
 
                         <div class="form-group row mt-4">
+                            <!-- buttons  -->
                             <div class="col-sm-6 d-flex justify-content-start">
                                 <button type="button" class="btn btn-primary prev">Previous</button>
                             </div>
                             <div class="col-sm-6 d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary btn-update me-2">Update</button>
                                 <button type="button" class="btn btn-primary btn-cancel me-2">Cancel</button>
+                                <button type="button" class="btn btn-primary btn-update me-2">Update</button>
                                 <button type="button" class="btn btn-primary submit ">Submit</button>
                             </div>
                         </div>
@@ -180,8 +195,11 @@
 
         </div>
     </div>
-    <table class="w3-table-all mt-5 data-table" id="myTable">
+
+    <h3 class="m-3 text-center text-primary data-title">Data of Users</h3>
+    <table class="container mt-2 data-table" id="myTable">
         <thead>
+            <!-- table heading  -->
             <tr class="w3-blue">
                 <th>Sl.No</th>
                 <th>First Name</th>
@@ -192,12 +210,13 @@
                 <th>DOB</th>
                 <th>Sports</th>
                 <th>About</th>
+                <th>T & C</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-           
+
         </tbody>
     </table>
 
@@ -209,9 +228,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script>$(".level").hide().first().show();
-    $(".btn-update, .btn-cancel").hide();</script>
+        $(".btn-update, .btn-cancel").hide(); $("table").hide(); $('input[name="gridRadios"]').prop('checked', false);$(".data-title").hide();</script>
 
 </body>
 
 </html>
-
