@@ -18,16 +18,15 @@ $(document).ready(function () {
     });
 
     // submit button 
-    $(".submit").click(function (e) {
-        e.preventDefault()
+    $(".submit").click(function () {
         get_details();
         clear_details();
 
-        $("table").show();
+        $("table, .data-title").show();
         var count = $('#myTable tr').length;
 
 
-        $(".data-table tbody").append("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $(".data-table tbody").append("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
 
     })
 
@@ -37,6 +36,9 @@ $(document).ready(function () {
         $("tbody tr").each(function(index){
             $(this).find("td:eq(0)").text(index+1);
         })
+        if ($("tbody tr").length==0){
+            $("table , .data-title").hide();
+        }
     })
 
     // edit button 
@@ -50,6 +52,7 @@ $(document).ready(function () {
         var dob = $(this).parents("tr").attr("data-dob");
         var sports = $(this).parents("tr").attr("data-sports");
         var about = $(this).parents("tr").attr("data-about");
+        var checkbox = $(this).parents("tr").attr("data-checkbox");
 
         $("#fname").val(fname);
         $("#lname").val(lname);
@@ -59,8 +62,10 @@ $(document).ready(function () {
         $("#birthday").val(dob);
         $("#sports").val(sports);
         $("#about").val(about);
+        $("#checkbox").val(checkbox);
 
         $(".btn-update , .btn-cancel").show();
+        $(".btn_delete").attr("disabled",true);
         $(".submit").hide();
         current_tr = $(this).parents("tr").index();
         console.log(current_tr);
@@ -71,26 +76,26 @@ $(document).ready(function () {
 
         $(".btn-update, .btn-cancel").hide();
         $(".submit").show()
+        $(".btn_delete").attr("disabled",false);
     })
 
     // update button 
     $("body").on("click",".btn-update",function(){
         $(".level").hide().first().show();
         var count = $('#myTable tr').length-1;
-        $(this).hide();$(".btn-cancel").hide();
-        (".submit").show();
+        $(this).hide();
+        $(".btn-cancel").hide();
+        $(".submit").show();
         get_details();
+        clear_details();
 
-        $("input[type=text],input[type=phone], textarea").val("");
-        $('input[name="gridRadios"]').prop('checked', false);
-        $("#sports").val(0);
-
-        $("tbody tr").eq(current_tr).replaceWith("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $("tbody tr").eq(current_tr).replaceWith("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $(".btn_delete").attr("disabled",false);
     })
 
     function clear_details(){
         $("input[type=text],input[type=phone], textarea").val("");
-        $('input[name="gridRadios"]').prop('checked', false);
+        $('#gridRadios1').prop('checked', true);
         $("#sports").val(0);
         $('input[type="checkbox"]').prop('checked',false);
         $(".level").hide().first().show();
