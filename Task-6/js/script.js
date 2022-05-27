@@ -25,9 +25,7 @@ $(document).ready(function () {
         $("table, .data-title").show();
         var count = $('#myTable tr').length;
 
-
         $(".data-table tbody").append("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
-
     })
 
     $("body").on("click",".btn_delete",function(){
@@ -71,6 +69,7 @@ $(document).ready(function () {
         console.log(current_tr);
 
     })
+    // cancel button 
     $("body").on("click",".btn-cancel",function(){
         clear_details();
 
