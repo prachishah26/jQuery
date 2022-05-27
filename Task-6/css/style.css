@@ -10,14 +10,14 @@
     min-height: 33vh;
 }
 .levels{
-    border: 1px solid lightgray;
+    border: 1px solid gray;
     background-color: hsl(0, 0%, 94%);
 }
 .levels h5{
     width: 150px;
     margin-bottom: 0px;
     padding: 10px;
-    background-color:rgb(225, 224, 224);
+    background-color:hsl(0, 0%, 94%);
     border-right: 1px solid gray;
 }
 .levels h5:hover{
@@ -37,7 +37,7 @@ table{
     overflow: hidden;
 }
 .bg{
-    background-color: rgb(186, 184, 184)!important;
+    background-color: rgb(210, 209, 209)!important;
     color: rgb(9, 3, 3) !important;
 }
 input:focus{

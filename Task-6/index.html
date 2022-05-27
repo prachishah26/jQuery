@@ -28,9 +28,9 @@
 
 <body>
     <div class="container wizard-form">
-        <h3 class="text-center m-3">WIZARD FORM</h3>
+        <h3 class="text-center m-3 text-primary">WIZARD FORM</h3>
 
-        <div class="levels d-flex justify-content-center">
+        <div class="border-bottom-0 levels d-flex justify-content-center">
             <h5 class="pe-4 ps-4 text-center step border-right" style="border-left: 1px solid gray;">STEP-1</h5>
             <h5 class="pe-4 ps-4 text-center step border-right">STEP-2</h5>
             <h5 class="pe-4 ps-4 text-center step">STEP-3</h5>
@@ -39,7 +39,7 @@
         <div class="all_levels">
             <div class="level1 level">
                 <!-- level-1 starts  -->
-                <form>
+                <form id="wizardForm">
                     <div class="details">
                         <!-- first name  -->
                         <div class="form-group row mt-4">
@@ -111,9 +111,9 @@
 
                         <div class="form-group row mt-4">
                             <!-- birthday  -->
-                            <label for="contact" class="col-sm-2 col-form-label">Date of Birth :</label>
+                            <label for="dob" class="col-sm-2 col-form-label">Date of Birth :</label>
                             <div class="col-sm-10">
-                                <input type="text" id="birthday" name="birthday" class="form-control"
+                                <input type="text" id="dob" name="birthday" class="form-control"
                                     placeholder="DD/MM/YYYY">
                             </div>
                         </div>
