@@ -1,26 +1,17 @@
-body{
-    overflow: scroll;
-}
-
 .wizard-form{
     max-width: 80%;
 }
 .level{
-    /* height: 55vh; */
     background-color: hsl(0, 0%, 100%)	;
     padding: 20px;
     border: 1px solid gray;
-    /* overflow: scroll; */
-
 }
 .details{
-    height: 30vh;
+    min-height: 33vh;
 }
-
 .levels{
     border: 1px solid lightgray;
     background-color: hsl(0, 0%, 94%);
-    
 }
 .levels h5{
     width: 150px;
@@ -29,19 +20,28 @@ body{
     background-color:rgb(225, 224, 224);
     border-right: 1px solid gray;
 }
-
 .levels h5:hover{
     cursor: pointer;
 }
-
 .btn{
     width: 120px;
 }
-
+.btn-edit, .btn_delete{
+    width: 90px;
+}
 table ,tr ,th ,td{
     border: 1px solid black;
 }
-
 table{
     width: 100vw;
+    overflow: hidden;
+}
+.bg{
+    background-color: rgb(186, 184, 184)!important;
+    color: rgb(9, 3, 3) !important;
+}
+input:focus{
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid lightgray !important;
 }

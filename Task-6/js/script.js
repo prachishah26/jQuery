@@ -1,20 +1,24 @@
 $(document).ready(function () {
     $("table").hide()
     var index,page,firstName,lastName,gender,email,contact,dob,sports,about,checkbox,current_tr;
+    $(".step").removeClass("bg").eq(0).addClass("bg")
 
     $(".step").click(function () {
         index = $(this).index();
         $(".level").hide().eq(index).show();
+        $(".step").removeClass("bg").eq($(".level:visible").index()).addClass("bg")
     });
 
     $(".next").click(function () {
         page = $(".level:visible").index();
         $(".level").hide().eq(page + 1).show();
+        $(".step").removeClass("bg").eq($(".level:visible").index()).addClass("bg")
     });
 
     $(".prev").click(function () {
         page = $(".level:visible").index();
         $(".level").hide().eq(page - 1).show();
+        $(".step").removeClass("bg").eq($(".level:visible").index()).addClass("bg")
     });
 
     // submit button 
@@ -25,7 +29,9 @@ $(document).ready(function () {
         $("table, .data-title").show();
         var count = $('#myTable tr').length;
 
-        $(".data-table tbody").append("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $(".data-table tbody").append("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-warning btn-edit">EDIT</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $(".step").removeClass("bg").eq(0).addClass("bg");
+        $(".submit-status").show().fadeOut(5000);
     })
 
     $("body").on("click",".btn_delete",function(){
@@ -88,7 +94,7 @@ $(document).ready(function () {
         get_details();
         clear_details();
 
-        $("tbody tr").eq(current_tr).replaceWith("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-info btn-edit">edit</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
+        $("tbody tr").eq(current_tr).replaceWith("<tr data-fname='"+firstName+"' data-lname='" +lastName + "'data-gender='" + gender + "'data-email='" + email + "'data-contact='" + contact + "'data-dob='"+ dob + "'data-sports='" + sports +"'data-about='" + about+"'data-checkbox='" + checkbox +"'><td>"+count+ "</td><td>"+firstName + "</td><td>"+lastName+"</td><td>"+gender+"</td><td>"+email+"</td><td>"+contact+"</td><td>"+dob+"</td><td>"+sports+"</td><td>"+about+"</td><td>"+checkbox+"</td><td>"+'<button class="btn btn-warning btn-edit">EDIT</button>' +"</td><td>"+'<button class="btn btn-danger btn_delete">DELETE</button>'+"</td></tr>");
         $(".btn_delete").attr("disabled",false);
     })
 
