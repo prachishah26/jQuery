@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     var index, page, firstName, lastName, gender, email, contact, dob, sports, about, checkbox, current_tr;
 

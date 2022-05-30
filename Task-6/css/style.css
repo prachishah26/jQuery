@@ -1,3 +1,6 @@
+.error{
+    color:red;
+  }
 .wizard-form{
     max-width: 80%;
 }
