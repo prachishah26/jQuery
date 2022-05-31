@@ -1,6 +1,9 @@
 $(document).ready(function () {
     var index, page, gender, sports, checkbox, current_tr;
+    const table = $("#myTable").DataTable();
+
     $(".step").removeClass("bg").eq(0).addClass("bg");
+
 
     $(".step").click(function () {
         index = $(this).index();
@@ -51,33 +54,33 @@ $(document).ready(function () {
                 required: true,
                 lettersonly: true,
                 minlength: 2,
-                maxlength:80
+                maxlength: 80
             },
             lname: {
                 required: true,
                 lettersonly: true,
                 minlength: 2,
-                maxlength:80
+                maxlength: 80
             },
             gender: "required",
             email: {
                 required: true,
-                valid_email : true
+                valid_email: true
 
             },
             contact: "required",
             dob: "required",
             hours: {
-                required : true,
-                numbersonly : true,
-                min:5,
-                max:24
+                required: true,
+                numbersonly: true,
+                min: 5,
+                max: 24
             },
             zipcode: "required",
             ip: {
-                required : true,
-                minlength : 8,
-                maxlength:15
+                required: true,
+                minlength: 8,
+                maxlength: 15
             },
             sports: "required",
             about: "required",
@@ -99,21 +102,21 @@ $(document).ready(function () {
             },
             gender: "Please choose your gender",
             email: {
-                required:"Please enter email id",
-                valid_email:"PLease enter a valid email"
+                required: "Please enter email id",
+                valid_email: "PLease enter a valid email"
             },
             contact: "Please enter your contact",
             dob: "Please enter your birthdate",
             hours: {
-                required : "Please enter hours",
-                numbersonly : "Numbers only !",
-                min : "Min 5 hours are required !",
-                max : "Max 24 hours, not more !"
+                required: "Please enter hours",
+                numbersonly: "Numbers only !",
+                min: "Min 5 hours are required !",
+                max: "Max 24 hours, not more !"
             },
             zipcode: "Please enter zipcode ",
             ip: {
-                required : "Please enter your IP address",
-                minlength : "Minimum length should be 8 ! ",
+                required: "Please enter your IP address",
+                minlength: "Minimum length should be 8 ! ",
                 maxlength: "Maximum length should be 12 ! "
             },
             sports: "Please choose your favourite sports",
@@ -125,17 +128,16 @@ $(document).ready(function () {
                 error.appendTo(element.parents('.form-group'));
             }
             if (element.is(":checkbox")) {
-                error.appendTo( element.parent("div").next("div"));
+                error.appendTo(element.parent("div").next("div"));
             }
 
             else { // This is the default behavior 
                 error.insertAfter(element);
-            }            
+            }
         }
     })
 
     // masking -----------------------------------
-
     $('input[name="zipcode"]').inputmask('999999');
     $('input[name="contact"]').inputmask('+99 9999999999');
     $('input[name="ip"]').inputmask({
@@ -146,15 +148,21 @@ $(document).ready(function () {
     $('input[name="dob"]').keydown(function (e) {
         e.preventDefault();
     });
-
+    var count = 1;
     // submit button ------------------------------------
     $(".submit").click(function (e) {
-        // event.preventDefault();
+
         if ($("#wizardForm").valid()) {
             var details = get_details();
-            var count = $('#myTable tr').length;
+            // count = table.row( $(this).parent('tr') ).index();
 
-            $(".data-table tbody").append(`<tr data-fname='${details.firstName}' data-lname='${details.lastName}' data-gender='${gender}' data-email= '${details.email}' data-contact='${details.contact}' data-dob= '${details.dob}' data-hours='${details.hours}' data-zipcode='${details.zipcode}' data-ip='${details.ip}' data-sports='${sports}' data-about='${details.about}' data-checkbox='${checkbox}'><td>${count}</td><td>${details.firstName} </td><td>${details.lastName}</td><td>${gender}</td><td>${details.email}</td><td>${details.contact}</td><td>${details.dob}</td><td>${details.hours}</td><td>${details.zipcode}</td><td>${details.ip}</td><td>${sports}</td><td>${details.about}</td><td>${checkbox}</td><td><button class="btn btn-warning btn-edit">EDIT</button></td><td><button class="btn btn-danger btn_delete">DELETE</button></td></tr>`);
+            const tr = $(`<tr data-fname='${details.firstName}' data-lname='${details.lastName}' data-gender='${gender}' data-email= '${details.email}' data-contact='${details.contact}' data-dob= '${details.dob}' data-hours='${details.hours}' data-zipcode='${details.zipcode}' data-ip='${details.ip}' data-sports='${sports}' data-about='${details.about}' data-checkbox='${checkbox}'><td>${count}</td><td>${details.firstName} </td><td>${details.lastName}</td><td>${gender}</td><td>${details.email}</td><td>${details.contact}</td><td>${details.dob}</td><td>${details.hours}</td><td>${details.zipcode}</td><td>${details.ip}</td><td>${sports}</td><td>${details.about}</td><td>${checkbox}</td><td><button class="btn btn-warning btn-edit">EDIT</button></td><td><button class="btn btn-danger btn_delete">DELETE</button></td></tr>`);
+            
+            table.row.add(tr[0]).draw();
+            ++count;
+
+            // for html-css table ----------------
+            // $("#myTable tbody").append(`<tr data-fname='${details.firstName}' data-lname='${details.lastName}' data-gender='${gender}' data-email= '${details.email}' data-contact='${details.contact}' data-dob= '${details.dob}' data-hours='${details.hours}' data-zipcode='${details.zipcode}' data-ip='${details.ip}' data-sports='${sports}' data-about='${details.about}' data-checkbox='${checkbox}'><td>${count}</td><td>${details.firstName} </td><td>${details.lastName}</td><td>${gender}</td><td>${details.email}</td><td>${details.contact}</td><td>${details.dob}</td><td>${details.hours}</td><td>${details.zipcode}</td><td>${details.ip}</td><td>${sports}</td><td>${details.about}</td><td>${checkbox}</td><td><button class="btn btn-warning btn-edit">EDIT</button></td><td><button class="btn btn-danger btn_delete">DELETE</button></td></tr>`);
 
             clear_details();
             $("table, .data-title").show();
@@ -169,14 +177,14 @@ $(document).ready(function () {
         e.preventDefault();
 
     })
-
     // delete button ------------------------------
     $("body").on("click", ".btn_delete", function () {
-        $(this).parents("tr").remove();
+        // $(this).parents("tr").remove().draw();
+        table.row( $(this).parents('tr') ).remove().draw();
+        
         $("tbody tr").each(function (index) {
             $(this).find("td:eq(0)").text(index + 1);
         })
-        
     })
 
     // edit button --------------------------------
@@ -184,6 +192,7 @@ $(document).ready(function () {
         // taking data from table
         var editData = $(this).parents("tr").data();
         console.log(editData);
+        count = table.row( $(this).parent('tr') ).index();
 
         // setting data into form 
         $.each(editData, function (index, value) {
@@ -204,12 +213,11 @@ $(document).ready(function () {
         $(".btn-update, .btn-cancel").hide();
         $(".submit").show();
         $(".btn_delete").attr("disabled", false);
-        
-        $("#wizardForm").validate().resetForm(); 
+
+        $("#wizardForm").validate().resetForm();
         $('#wizardForm')[0].reset();
         $(".level").hide().first().show();
         $(".step").removeClass("bg").first().addClass("bg");
-        
 
     })
 
