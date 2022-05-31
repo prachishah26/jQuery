@@ -14,19 +14,26 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-    <!-- jquery main link  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <!-- plugins  -->
+    <!-- jquery css ui  -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- input mask  -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <!-- jquery ui  -->
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script> -->
+
+    <!-- jquery validation  -->
     <script src=https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js></script>
 
     
     <!-- jquery script -->
-    <script src="js/script2.js"></script>
+    <script src="js/script3.js"></script>
 
 
     <title>Task-6 : Wizard form</title>
@@ -110,7 +117,7 @@
                             <!-- email id  -->
                             <label for="email" class="col-sm-2 col-form-label">Email :</label>
                             <div class="col-sm-10">
-                                <input type="text" id="email" class="form-control" name="email" placeholder="email@example.com">
+                                <input type="text" id="email" class="form-control" name="email" placeholder="info@example.com">
                             </div>
                         </div>
                         <div class="form-group row mt-4">
@@ -153,21 +160,21 @@
                             <!-- hours  -->
                             <label for="hours" class="col-sm-2 col-form-label">For how many hours :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="hours" name ="hours" placeholder="hh">
+                                <input type="text" class="form-control" id="hours" name ="hours" placeholder="Hours">
                             </div>
                         </div>
-                        <div class="form-group row mt-1">
+                        <div class="form-group row mt-4">
                             <!-- zip code  -->
                             <label for="zip-code" class="col-sm-2 col-form-label">Zip-code :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="">
+                                <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Enter zip-code here">
                             </div>
                         </div>
                         <div class="form-group row mt-4">
                             <!-- ip-address  -->
                             <label for="ip-addr" class="col-sm-2 col-form-label">Ip-address :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="ip" name="ip" placeholder="">
+                                <input type="text" class="form-control" id="ip" name="ip" placeholder="Enter your IP address here ">
                             </div>
                         </div>
 
@@ -194,7 +201,7 @@
                             <label for="sports" class="col-sm-2 col-form-label">Favourite Sports :</label>
                             <div class="col-sm-10">
                                 <select class="custom-select form-control mr-sm-2" id="sports" name="sports">
-                                    <option value="0" selected>Choose your favourite sport</option>
+                                    <option value="" selected>Choose your favourite sport</option>
                                     <option value="Cricket">Cricket</option>
                                     <option value="Football">Football</option>
                                     <option value="Basketball">Basketball</option>
@@ -226,6 +233,7 @@
                                             target="_blank">Terms and
                                             conditions</a> </label>
                                 </div>
+                                <div></div>
                             </div>
                         </div>
                     </div>

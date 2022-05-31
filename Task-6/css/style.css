@@ -10,7 +10,7 @@
     border: 1px solid gray;
 }
 .details{
-    min-height: 33vh;
+    min-height: 36vh;
 }
 .levels{
     border: 1px solid gray;
@@ -36,8 +36,8 @@ table ,tr ,th ,td{
     border: 1px solid black;
 }
 table{
-    width: 100vw;
-    overflow: hidden;
+    width: 55px;
+    overflow: scroll;
 }
 .bg{
     background-color: rgb(210, 209, 209)!important;
@@ -47,4 +47,7 @@ input:focus{
     box-shadow: none !important;
     outline: none !important;
     border: 1px solid lightgray !important;
+}
+select{
+    color : black !important;
 }
