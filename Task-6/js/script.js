@@ -1,6 +1,5 @@
 $(document).ready(function () {
     var index, page, gender, sports, checkbox, current_tr;
-    $("table").hide();
     $(".step").removeClass("bg").eq(0).addClass("bg");
 
     $(".step").click(function () {
@@ -174,13 +173,10 @@ $(document).ready(function () {
     // delete button ------------------------------
     $("body").on("click", ".btn_delete", function () {
         $(this).parents("tr").remove();
-
         $("tbody tr").each(function (index) {
             $(this).find("td:eq(0)").text(index + 1);
         })
-        if ($("tbody tr").length == 0) {
-            $("table , .data-title").hide();
-        }
+        
     })
 
     // edit button --------------------------------
@@ -204,11 +200,17 @@ $(document).ready(function () {
 
     })
     // cancel button --------------------------------
-    $("body").on("click", ".btn-cancel", function () {
-        clear_details();
+    $("body").on("click", ".btn-cancel", function (e) {
         $(".btn-update, .btn-cancel").hide();
         $(".submit").show();
         $(".btn_delete").attr("disabled", false);
+        
+        $("#wizardForm").validate().resetForm(); 
+        $('#wizardForm')[0].reset();
+        $(".level").hide().first().show();
+        $(".step").removeClass("bg").first().addClass("bg");
+        
+
     })
 
     // update button -------------------------------
