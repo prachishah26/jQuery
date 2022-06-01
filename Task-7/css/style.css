@@ -1,0 +1,67 @@
+body{
+    height: 100vh;
+    background:linear-gradient(rgb(3, 13, 95),rgb(25, 81, 222));
+    color: black;
+}
+.container{
+    height: 100vh;
+}
+.buttons{
+    width: 500px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.calc{
+    background-color: rgb(221, 218, 218)!important ;
+}
+.buttons .col-2,.col-4{
+    background-color: rgb(221, 218, 218);
+}
+.history{
+    height: 100px;
+    background-color: rgb(221, 218, 218);
+}
+.display{
+    width: 500px;
+    height: 55px;
+    background-color: white;
+    border: 1px solid gray;
+}
+.buttons .col-2 h5{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.buttons .col-4 h5{
+    border: 1px solid gray;
+}
+.buttons .col-4 .btn{
+    width: 135px;
+    border-radius: 5px;
+}
+.btn{
+    border-radius: 0;
+    width: 60px;
+}
+.calc h3{
+    background-color: rgb(60, 58, 58);
+    color: white;
+    margin-bottom: 0px;
+    height: 50px;
+}
+.row{
+    --bs-gutter-x: -1rem;
+}
+input{
+    height: 100%;
+    width: 100%;
+}
+.history{
+    font-size: 20px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.history div{
+    justify-content: space-between;
+}
