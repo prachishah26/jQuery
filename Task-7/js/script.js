@@ -1,10 +1,11 @@
 $(document).ready(function () {
+    var isNewValue;
+
     //Adding to the expression
-    var status;
     $(".btn").click(function () {
-        if (status == true) {
+        if (isNewValue == true) {
             $("#expression").val(0);
-            status = false;
+            isNewValue = false;
         }
         if (!$(this).hasClass("not")) {
             if ($("#expression").val() == 0)
@@ -27,19 +28,19 @@ $(document).ready(function () {
     // clear button-----------------------------------
     $(".clear").click(function () {
         $("#expression").val("0");
-        status = true;
+        isNewValue = true;
     });
 
     // equal button ----------------------------------
     $(".equal").click(function () {
-        status = true;
+        isNewValue = true;
         var result;
         //Check for syntax error----------------------
         try {
             var expression = $("#expression").val();
             var expression = expression.replace(/²/g, "**2");
             var expression = expression.replace(/√/g, "**0.5 ");
-            result = (eval(expression));
+            result = (math.eval(expression));
             if (result == Infinity) {
                 result = "Malform expression";
             }
@@ -57,14 +58,14 @@ $(document).ready(function () {
             if (e instanceof TypeError) {
                 $("#expression").val("Malform expression");
             }
-            console.log(status)
+            console.log(isNewValue)
         }
     });
 
     $(document).keypress(function (e) {
-        if (status == true) {
+        if (isNewValue == true) {
             $("#expression").val("");
-            status = false;
+            isNewValue = false;
         }
         $(".result").val($(".result").val() + (String.fromCharCode(e.which)));
         var key = e.which;
