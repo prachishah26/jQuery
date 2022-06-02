@@ -19,18 +19,18 @@ $(document).ready(function () {
         nameOfbox = $(this).parent().attr("name");
         console.log(nameOfbox)
 
-        if ($(".record div").data('sort')==nameOfbox){
-            $(".record div").empty();
+        // if ($(".record div").data('sort')==nameOfbox){
+        //     $(".record div").empty();
 
-            $(this).parent().find("input").each(function(index,element){
-                if (index == 0){
-                    $(".record").find("div").eq(count).append(`<h5>${element.value}</h5>`);
-                }
-                else{
-                    $(".record").find("div").eq(count).append(`<p>${element.value}</p>`);
-                }
-            })
-        }
+        //     $(this).parent().find("input").each(function(index,element){
+        //         if (index == 0){
+        //             $(".record").find("div").eq(count).append(`<h5>${element.value}</h5>`);
+        //         }
+        //         else{
+        //             $(".record").find("div").eq(count).append(`<p>${element.value}</p>`);
+        //         }
+        //     })
+        // }
         
         $(".record").append(`<div data-sort=${nameOfbox}></div>`)
         $(this).parent().find("input").each(function(index,element){
