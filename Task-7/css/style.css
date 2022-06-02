@@ -10,7 +10,7 @@ body{
     width: 500px;
     padding-left: 15px;
     padding-top: 15px;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
 }
 .calc{
     background-color: rgb(221, 218, 218)!important ;
@@ -28,12 +28,12 @@ body{
     background-color: white;
     border: 1px solid gray;
 }
-.buttons .col-2 h5{
+.buttons .col-2 button{
     background-color: white;
     border-radius: 5px;
     border: 1px solid gray;
 }
-.buttons .col-4 h5{
+.buttons .col-4 button{
     border: 1px solid gray;
 }
 .buttons .col-4 .btn{
@@ -53,6 +53,7 @@ body{
 .row{
     --bs-gutter-x: -1rem;
 }
+
 input{
     height: 100%;
     width: 100%;
@@ -64,4 +65,15 @@ input{
 }
 .history div{
     justify-content: space-between;
+}
+button{
+    margin-top: 10px;
+}
+.btn:focus{
+    box-shadow: none;
+}
+.history p{
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
 }

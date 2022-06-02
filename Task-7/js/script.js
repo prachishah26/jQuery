@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //Adding to the expression
-    var equation, status;
+    var status;
     $(".btn").click(function () {
         if (status == true) {
             $("#expression").val(0);
@@ -10,20 +10,8 @@ $(document).ready(function () {
             if ($("#expression").val() == 0)
                 $("#expression").val($(this).text());
             else {
-                // console.log($(this).text());
-
-                if ($(this).html() === '<i class="fa-solid fa-square-root-variable"></i>') {
-                    var sqrt = $("#expression").val();
-                    $("#expression").val($("#expression").val() + "**(0.5)");
-
-                }
-                if ($(this).text() === "x2") {
-                    // var square = $("#expression").val();
-                    $("#expression").val($("#expression").val() + "**2");
-                }
-                else {
-                    $("#expression").val($("#expression").val() + $(this).text());
-                }
+                console.log($(this).val());
+                $("#expression").val($("#expression").val() + $(this).val());
             }
         }
     });
@@ -48,32 +36,29 @@ $(document).ready(function () {
         var result;
         //Check for syntax error----------------------
         try {
-            if (eval(($("#expression").val()))!==Infinity){
-                result = (eval(($("#expression").val())));
+            var expression = $("#expression").val();
+            var expression = expression.replace(/²/g, "**2");
+            var expression = expression.replace(/√/g, "**0.5 ");
+            result = (eval(expression));
+            if (result == Infinity) {
+                result = "Malform expression";
             }
-            
-        } catch (e) {
-            if (e instanceof SyntaxError) {
-                alert("Error! Resetting values.");
-                $("#expression").val("0");
-                $(".result").val("0");
+            else if (result == undefined) {
+                result = "Malform expression";
             }
-            if (e instanceof TypeError) {
-                alert("Error! Resetting values.");
-                $("#expression").val("0");
-                $(".result").val("0");
-            }
-        }
-        var contain = $("#expression").val()
-        if ($("contain:contains('x2')")) {
-            $(".history").append(`<div class="d-flex"><p>${$("#expression").val().replace("**2", "^2")}</p><p>${'='}</p><p>${result}</p></div>`)
-            $(".result").val(result);
-        }
-        else {
             $(".history").append(`<div class="d-flex"><p>${$("#expression").val()}</p><p>${'='}</p><p>${result}</p></div>`)
             $(".result").val(result);
+            result = 0;
+
+        } catch (e) {
+            if (e instanceof SyntaxError) {
+                $("#expression").val("Malform expression");
+            }
+            if (e instanceof TypeError) {
+                $("#expression").val("Malform expression");
+            }
+            console.log(status)
         }
-        result = 0;
     });
 
     $(document).keypress(function (e) {
@@ -82,12 +67,10 @@ $(document).ready(function () {
             status = false;
         }
         $(".result").val($(".result").val() + (String.fromCharCode(e.which)));
-
         var key = e.which;
         if (key == 13) { // the enter key code
             $('.equal').click();
         }
-
     });
     $(document).keyup(function (e) {
         var key = e.which;
@@ -96,5 +79,3 @@ $(document).ready(function () {
         }
     });
 });
-
-
