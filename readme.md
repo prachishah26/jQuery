@@ -30,3 +30,17 @@ By default first accordion's information is visible, and others are hidden.
 
 => Wizard Form : Wizard form is multistep form. There are many levels of the form. There will be validation for the input fields as per our needs. The data will be stored in datatable which is made from jquery. There will be two buttons : Edit and Delete. Edit button will take data from the form and will fill it in the form so that we can change the data. Delete button will delete the particular data. After pressing edit button, two buttons will be shown : Cancel and Update. cancel button will reset the form and update button will change the data into the table.
 <br>
+
+### Task - 6 : Calculator
+
+=> Create a calculator like Ubuntu basic calculator.
+List of buttons:<br>
+--> 0 to 9<br>
+--> Plus, Minus, Division, Multiplication and Modulo <br>
+--> Decimal point <br>
+--> Equal<br>
+--> Backspace<br>
+--> Clear All<br>
+Bind the keyboard with your calculator, so the user can use the calculator without mouse.
+Must follow basic mathematical rules.
+Display error like: Malformed expression, For unusual input like: 5656/0 or 54*5145/*-+
