@@ -31,4 +31,5 @@ $(document).ready(function(){
         $(".page-options li").removeClass("underline");
         $(this).addClass("underline");
     })
+    $(".pagination").hide();
 })

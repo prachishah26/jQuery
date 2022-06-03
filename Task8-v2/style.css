@@ -1,0 +1,25 @@
+.btn:focus{
+    box-shadow: none;
+   
+}
+.btn{
+    margin: 10px;
+}
+.box{
+    border: 1px solid gray;
+    padding: 15px;
+}
+.record div{
+    border: 1px solid gray;
+    margin-bottom: 2rem;
+}
+.record h5{
+    border: 1px solid gray;
+    margin-bottom: 0px !important;
+}
+.record p {
+    display: inline-block;
+    width: 50%;
+    border: 1px solid gray;
+    margin-bottom: 0px !important;
+}

@@ -85,3 +85,25 @@ a{
     border-radius: 20px;
     font-size: 16px;
 }
+.content .duration span{
+    margin-left: 20px;
+    background-color: rgb(76, 76, 130);
+    padding: 8px;
+    border-radius: 15px;
+    color: white;
+}
+.content h6{
+    color: rgb(127, 123, 123);
+    font-size: 15px;
+}
+
+.content h6 i{
+    font-size: 12px;
+}
+.content .row p{
+    text-align: justify;
+}
+.content .row img{
+    max-width: 100%;
+    max-height: 130px;
+}
