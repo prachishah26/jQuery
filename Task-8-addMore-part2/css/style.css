@@ -13,6 +13,7 @@
     border: 1px solid gray;
     margin-bottom: 2rem;
     padding: 5px;
+    
 }
 .record h5{
     border: 1px solid gray;
@@ -23,4 +24,13 @@
     width: 50%;
     border: 1px solid gray;
     margin-bottom: 0px !important;
+}
+table, tr,td{
+    border: 1px solid gray;
+}
+table{
+    min-width: 400px;
+}
+td{
+    min-width: 200px;
 }
