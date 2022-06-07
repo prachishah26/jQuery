@@ -1,51 +1,57 @@
 $(document).ready(function () {
-    var getYear, month, flag = false;
+    var month,firstDay,endDate, isLastDate = false;
+
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     var totalDayInMonth = [31, 29, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30]
+
+    // this will append options in select menu ------------
+    setYears();
+    setMonths();
+
+    // date object ---------------------------------------
     var dt = new Date();
     var currentMonth = dt.getMonth();
-    // console.log("cm....",currentMonth);
     var currentYear = dt.getFullYear();
     var currentDate = dt.getDate();
 
     $(".monthDisplay").text(months[currentMonth]);
     $(".yearDisplay").text(currentYear);
 
-    calenderCalculation();
+    // this will show calender on screen------------
+    calenderUI();
 
+    // Todays date will display----------------------------------------
     $(".today").click(function () {
         $("table tbody").empty();
         currentMonth = dt.getMonth();
         currentYear = dt.getFullYear();
         currentDate = dt.getDate();
-        calenderCalculation();
+        calenderUI();
     })
 
+    // this will return total days in particular month-------------
     function daysInMonth(iMonth, iYear) {
         return 32 - new Date(iYear, iMonth, 32).getDate();
     }
 
-    function calenderCalculation() {
-
+    // function for calender-------------------------------------
+    function calenderUI() {
         let date = 1;
         currentMonth
         currentYear
         currentDate
-        console.log(currentMonth)
-        console.log("daysinmonth",daysInMonth(currentMonth,currentYear));
 
-        var day = (new Date(currentYear, currentMonth)).getDay();
-        console.log("....day...", day)
-
+        firstDay = (new Date(currentYear, currentMonth)).getDay();
         endDate = daysInMonth(currentMonth,currentYear)
 
         for (let i = 0; i < 6; i++) {
             $("tbody").append(`<tr></tr>`)
-            if (flag) {
+            if (isLastDate) {
                 break;
             }
             for (let j = 0; j < 7; j++) {
-                if (i === 0 && j < day) {
+                if (i === 0 && j < firstDay) {
                     $("tbody tr").eq(i).append(`<td></td>`)
                 }
                 else {
@@ -61,65 +67,58 @@ $(document).ready(function () {
                     }
                     date++;
                     if (date > endDate) {
-                        flag = true;
+                        isLastDate = true;
                         break;
                     }
                 }
             }
-            console.log("second for loop ends")
         }
-        flag = false
+        isLastDate = false
         $(".row h5 .monthDisplay").text(months[currentMonth]);
         $(".row h5 .yearDisplay").text(currentYear);
     }
 
+    // next month ------------------------------
     $(document).on("click", ".rightArrow", function () {
+
         ++currentMonth;
-        console.log("cm", currentMonth)
-
-        console.log(totalDayInMonth);
-
         if (currentMonth > 11) {
             currentMonth = 0;
             ++currentYear
         }
 
         $("table tbody").empty();
-        calenderCalculation();
+        calenderUI();
 
-        $(".row h5 .monthDisplay").text(months[currentMonth])
-        $(".row h5 .yearDisplay").text(currentYear)
 
     })
 
+    // previous month -------------------------------
     $(document).on("click", ".leftArrow", function () {
         --currentMonth;
         if (currentMonth < 0) {
             currentMonth = 11;
             --currentYear;
         }
-        $(".row h5 .monthDisplay").text(months[currentMonth])
-        $(".row h5 .yearDisplay").text(currentYear)
+
         $("table tbody").empty();
-        calenderCalculation();
+        calenderUI();
     })
 
 
-    // this will append options in select menu -----------------------------------
-    setYears();
-    setMonths();
+    
 
+    // find Date 
     $(document).on("click", ".findDate", function () {
         currentYear = $('.year').find(":selected").text();
         currentMonth = $('.month').find(":selected").val();
         currentDate = $('.date').find(":selected").text();
         $("table tbody").empty();
-        console.log(currentYear, currentMonth, currentDate)
-
-        calenderCalculation();
+        calenderUI();
     })
 
     function setYears() {
+        // it will fill years dropdown 
         var yearStartFrom = 1970
         var yearEnds = 2050
         for (var i = yearStartFrom; i <= yearEnds; i++) {
@@ -128,6 +127,7 @@ $(document).ready(function () {
     }
 
     function setMonths() {
+        // it will fill month dropdown 
         var firstMonth = 0;
         var lastMonth = 11;
         for (var j = firstMonth; j <= lastMonth; j++) {
@@ -136,8 +136,8 @@ $(document).ready(function () {
     }
 
     
-
     $(document).on("click", ".month", function () {
+        // this will help in select the date according to month 
         $(".date").empty()
         var year = $(".year option:selected").text();
         month = $(".month option:selected").val();
@@ -150,6 +150,7 @@ $(document).ready(function () {
     })
 
     $(document).on("click", ".date", function () {
+        // it will fill the date dropdown
         for (var i = 1; i <= totalDayInMonth[month]; i++) {
             $(".date").append(`<option>${i}</option>`)
         }
