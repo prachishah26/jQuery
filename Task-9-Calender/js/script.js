@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    var month,firstDay,endDate, isLastDate = false;
+    var month, firstDay, endDate,current_Date, isLastDate = false;
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    var totalDayInMonth = [31, 29, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30]
+    var totalDayInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     // this will append options in select menu ------------
     setYears();
@@ -28,6 +28,7 @@ $(document).ready(function () {
         currentYear = dt.getFullYear();
         currentDate = dt.getDate();
         calenderUI();
+        $("table tbody tr td").removeClass("bg-success")
     })
 
     // next month ------------------------------
@@ -54,11 +55,18 @@ $(document).ready(function () {
 
     // find Date 
     $(document).on("click", ".findDate", function () {
+
         currentYear = $('.year').find(":selected").text();
+        currentYearValue = $('.year').find(":selected").val();
         currentMonth = $('.month').find(":selected").val();
-        currentDate = $('.date').find(":selected").text();
-        $("table tbody").empty();
-        calenderUI();
+        current_Date = $('.date').find(":selected").text();
+
+        if (currentYearValue == "" || currentMonth == "") {
+        }
+        else {
+            $("table tbody").empty();
+            calenderUI();
+        }
     })
 
     // this will return total days in particular month-------------
@@ -72,9 +80,10 @@ $(document).ready(function () {
         currentMonth
         currentYear
         currentDate
+        current_Date
 
         firstDay = (new Date(currentYear, currentMonth)).getDay();
-        endDate = daysInMonth(currentMonth,currentYear)
+        endDate = daysInMonth(currentMonth, currentYear)
 
         for (let i = 0; i < 6; i++) {
             $("tbody").append(`<tr></tr>`)
@@ -89,9 +98,8 @@ $(document).ready(function () {
                     if (date == currentDate && currentMonth == dt.getMonth() && currentYear == dt.getFullYear()) {
                         $("tbody tr").eq(i).append(`<td class='bg-warning'>${date}</td>`)
                     }
-                    else if (date == currentDate && currentMonth == $('.month').find(":selected").val() && currentYear == $('.year').find(":selected").text()){
+                    else if (date == current_Date && currentMonth == $('.month').find(":selected").val() && currentYear == $('.year').find(":selected").text()) {
                         $("tbody tr").eq(i).append(`<td class='bg-success'>${date}</td>`)
-
                     }
                     else {
                         $("tbody tr").eq(i).append(`<td>${date}</td>`)
@@ -109,13 +117,18 @@ $(document).ready(function () {
         $(".row h5 .yearDisplay").text(currentYear);
     }
 
-
     function setYears() {
         // it will fill years dropdown 
         var yearStartFrom = 1970
         var yearEnds = 2050
         for (var i = yearStartFrom; i <= yearEnds; i++) {
-            $(".year").append(`<option value=${i}>${i}</option>`)
+            // $(".year").append(`<option value=${i}>${i}</option>`)
+            if(i == 2000){
+                $(".year").append(`<option value=${i} selected>${i}</option>`);
+            }
+            else{
+                $(".year").append(`<option value=${i}>${i}</option>`);
+            }
         }
     }
 
@@ -127,26 +140,25 @@ $(document).ready(function () {
             $(".month").append(`<option value=${j}>${months[j]}</option>`)
         }
     }
-
+    // this will help in select the date according to month 
     $(document).on("click", ".month", function () {
-        // this will help in select the date according to month 
-        $(".date").empty()
+        
         var year = $(".year option:selected").text();
         month = $(".month option:selected").val();
 
         if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
-            totalDayInMonth[1] = 28;
-        } else {
             totalDayInMonth[1] = 29;
+        } else {
+            totalDayInMonth[1] = 28;
         }
-    })
-
-    $(document).on("click", ".date", function () {
-        // it will fill the date dropdown
+        $(".date").empty();
+        $(".date").append(`<option value='nothing'>Date</option>`)
         for (var i = 1; i <= totalDayInMonth[month]; i++) {
             $(".date").append(`<option>${i}</option>`)
         }
+        $(".date").val("nothing")
     })
+
 })
 
 
