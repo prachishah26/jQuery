@@ -3,7 +3,8 @@ $(document).ready(function () {
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     var totalDayInMonth = [31, 29, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30]
     var dt = new Date();
-    var currentMonth = dt.getMonth() + 1;
+    var currentMonth = dt.getMonth();
+    // console.log("cm....",currentMonth);
     var currentYear = dt.getFullYear();
     var currentDate = dt.getDate();
 
@@ -14,7 +15,7 @@ $(document).ready(function () {
 
     $(".today").click(function () {
         $("table tbody").empty();
-        currentMonth = dt.getMonth() + 1;
+        currentMonth = dt.getMonth();
         currentYear = dt.getFullYear();
         currentDate = dt.getDate();
         calenderCalculation();
@@ -31,10 +32,12 @@ $(document).ready(function () {
         currentYear
         currentDate
         console.log(currentMonth)
-        console.log("daysinmonth",daysInMonth(currentMonth-1,currentYear));
+        console.log("daysinmonth",daysInMonth(currentMonth,currentYear));
 
-        var day = (new Date(currentYear, currentMonth - 1)).getDay();
+        var day = (new Date(currentYear, currentMonth)).getDay();
         console.log("....day...", day)
+
+        endDate = daysInMonth(currentMonth,currentYear)
 
         for (let i = 0; i < 6; i++) {
             $("tbody").append(`<tr></tr>`)
@@ -46,14 +49,18 @@ $(document).ready(function () {
                     $("tbody tr").eq(i).append(`<td></td>`)
                 }
                 else {
-                    if (date == currentDate && currentMonth == dt.getMonth() + 1 && currentYear == dt.getFullYear()) {
+                    if (date == currentDate && currentMonth == dt.getMonth() && currentYear == dt.getFullYear()) {
                         $("tbody tr").eq(i).append(`<td class='bg-warning'>${date}</td>`)
+                    }
+                    else if (date == currentDate && currentMonth == $('.month').find(":selected").val() && currentYear == $('.year').find(":selected").text()){
+                        $("tbody tr").eq(i).append(`<td class='bg-success'>${date}</td>`)
+
                     }
                     else {
                         $("tbody tr").eq(i).append(`<td>${date}</td>`)
                     }
                     date++;
-                    if (date > totalDayInMonth[currentMonth - 1]) {
+                    if (date > endDate) {
                         flag = true;
                         break;
                     }
@@ -62,7 +69,7 @@ $(document).ready(function () {
             console.log("second for loop ends")
         }
         flag = false
-        $(".row h5 .monthDisplay").text(months[currentMonth - 1]);
+        $(".row h5 .monthDisplay").text(months[currentMonth]);
         $(".row h5 .yearDisplay").text(currentYear);
     }
 
@@ -72,7 +79,7 @@ $(document).ready(function () {
 
         console.log(totalDayInMonth);
 
-        if (currentMonth > 12) {
+        if (currentMonth > 11) {
             currentMonth = 0;
             ++currentYear
         }
@@ -104,7 +111,7 @@ $(document).ready(function () {
 
     $(document).on("click", ".findDate", function () {
         currentYear = $('.year').find(":selected").text();
-        currentMonth = $('.month').find(":selected").val() + 1;
+        currentMonth = $('.month').find(":selected").val();
         currentDate = $('.date').find(":selected").text();
         $("table tbody").empty();
         console.log(currentYear, currentMonth, currentDate)
@@ -131,7 +138,7 @@ $(document).ready(function () {
     
 
     $(document).on("click", ".month", function () {
-        $(".date").empty().first().val("Date");
+        $(".date").empty()
         var year = $(".year option:selected").text();
         month = $(".month option:selected").val();
 
