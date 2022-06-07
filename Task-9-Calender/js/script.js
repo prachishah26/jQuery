@@ -30,6 +30,37 @@ $(document).ready(function () {
         calenderUI();
     })
 
+    // next month ------------------------------
+    $(document).on("click", ".rightArrow", function () {
+        ++currentMonth;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            ++currentYear
+        }
+        $("table tbody").empty();
+        calenderUI();
+    })
+
+    // previous month -------------------------------
+    $(document).on("click", ".leftArrow", function () {
+        --currentMonth;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            --currentYear;
+        }
+        $("table tbody").empty();
+        calenderUI();
+    })
+
+    // find Date 
+    $(document).on("click", ".findDate", function () {
+        currentYear = $('.year').find(":selected").text();
+        currentMonth = $('.month').find(":selected").val();
+        currentDate = $('.date').find(":selected").text();
+        $("table tbody").empty();
+        calenderUI();
+    })
+
     // this will return total days in particular month-------------
     function daysInMonth(iMonth, iYear) {
         return 32 - new Date(iYear, iMonth, 32).getDate();
@@ -78,44 +109,6 @@ $(document).ready(function () {
         $(".row h5 .yearDisplay").text(currentYear);
     }
 
-    // next month ------------------------------
-    $(document).on("click", ".rightArrow", function () {
-
-        ++currentMonth;
-        if (currentMonth > 11) {
-            currentMonth = 0;
-            ++currentYear
-        }
-
-        $("table tbody").empty();
-        calenderUI();
-
-
-    })
-
-    // previous month -------------------------------
-    $(document).on("click", ".leftArrow", function () {
-        --currentMonth;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            --currentYear;
-        }
-
-        $("table tbody").empty();
-        calenderUI();
-    })
-
-
-    
-
-    // find Date 
-    $(document).on("click", ".findDate", function () {
-        currentYear = $('.year').find(":selected").text();
-        currentMonth = $('.month').find(":selected").val();
-        currentDate = $('.date').find(":selected").text();
-        $("table tbody").empty();
-        calenderUI();
-    })
 
     function setYears() {
         // it will fill years dropdown 
@@ -135,7 +128,6 @@ $(document).ready(function () {
         }
     }
 
-    
     $(document).on("click", ".month", function () {
         // this will help in select the date according to month 
         $(".date").empty()
