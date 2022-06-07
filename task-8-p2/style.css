@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 50px;
+    background: linear-gradient(white,lightblue);
+    min-height: 100vh;
+}
+.section{
+    margin-top: 30px;
+    border: 1px solid black;
+    padding: 20px;
+}
+.btn{
+    margin: 6px;
+}
+input{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.data{
+    padding-left: 20px;
+}
+table,tr,td,th{
+    border: 1px solid;
+    border-collapse: collapse;
+}
+table{
+    margin-bottom: 25px;
+}
+td{
+    min-width: 200px;
+}
+th{
+    min-width: 400px;
+}
+
+.bootbox .modal-body .close {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 25px !important;
+   
+}
+.record{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+hr{
+    margin-bottom: 25px;
+}

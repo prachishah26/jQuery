@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 40px;
+}
+.container{
+    max-width: 60%;
+}
+.container h2{
+    color: chocolate;
+}
+.calender .row{
+    background-color: antiquewhite;
+    padding: 15px;
+}
+.calender{
+    background-color: rgb(241, 237, 237);
+}
+.monthYear{
+    padding: 10px;
+}
+.monthYear i{
+    font-size: 30px;
+}
+
+.monthYear .float i{
+    font-size: 30px;
+    float: right;
+}
+table{
+    width: 100%;
+}
+.find{
+    width: 100%;
+}
+table,th,tr,td{
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+tbody{
+    height: 200px;
+}
+.btn{
+    border: 1px solid black !important;
+}

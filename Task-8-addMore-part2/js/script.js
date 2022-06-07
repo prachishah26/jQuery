@@ -5,7 +5,7 @@ $(document).ready(function () {
     // This button will add another box of details -------------- 
     $(".addMore").click(function () {
         $(".btn-delete").attr("disabled", false);
-        $(".allBoxes").append(`<div class="box" name=${counter}><input type="text" class="p-2 text" placeholder="title"><button class="btn btn-secondary p-2 addChild">Add Child</button><button class="btn btn-danger btn-delete">Delete</button></div>`)
+        $(".allBoxes").append(`<div class="box" name=${counter}><input type="text" class="p-2 text" placeholder="Title"><button class="btn btn-secondary p-2 addChild">Add Child</button><button class="btn btn-danger btn-delete">Delete</button></div>`)
         ++counter;
     })
 
@@ -20,6 +20,7 @@ $(document).ready(function () {
         var parent = $(this).parent()
         var boxIndex = $(this).parents(".box").index()
         var parentIndex = $(this).parent().index();
+
         bootbox.confirm({
             message: "Do you want to delete this child element?",
             buttons: {
@@ -34,7 +35,7 @@ $(document).ready(function () {
                 if (result) {
                     parent.remove();
                     
-                    console.log($(".record>div").eq(boxIndex-1).find("p").eq(parentIndex));
+                    // console.log($(".record>div").eq(boxIndex-1).find("p").eq(parentIndex));
                     $(".record>div").eq(boxIndex-1).find("p").eq(parentIndex-2).remove();
                     $(".record>div").eq(boxIndex-1).find("p").eq(parentIndex-3).remove();
                 }
