@@ -3,6 +3,7 @@
 }
 body{
     padding: 40px;
+    background-color: rgb(245, 238, 245);
 }
 .container{
     max-width: 60%;
@@ -43,4 +44,11 @@ tbody{
 }
 .btn{
     border: 1px solid black !important;
+}
+.monthYear .row{
+    border: 1px solid black;
+}
+thead tr{
+    height: 40px;
+    background-color: rgb(244, 222, 244);
 }
