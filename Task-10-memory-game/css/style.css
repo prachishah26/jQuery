@@ -1,0 +1,43 @@
+body{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.container{
+    max-width: 80%;
+    height: 550px;
+    width: 1300px;
+    background-color: rgb(232, 239, 242);
+}
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.box{
+    background-color: skyblue;
+    height: 70px;
+    width: 90px;
+    margin:15px 30px 15px;
+    font-size: 30px;
+}
+
+i{
+    margin-top: 10px;
+    color: blue;
+    font-size: 35px;
+}
+
+.bg-pink{
+    background-color: lightpink;
+}
+
+.mainBox{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

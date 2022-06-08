@@ -1,0 +1,34 @@
+<i class="fa fa-fire"></i>
+<i class="fa fa-eye"></i>
+<i class="fa fa-wifi"></i>
+<i class="fa fa-plane"></i>
+<i class="fa fa-rocket"></i>
+<i class="fa fa-file"></i>
+<i class="fa fa-car"></i>
+<i class="fa fa-heartbeat"></i>
+<i class="fa fa-book"></i>
+<i class="fa fa-trophy"></i>
+<i class="fa fa-bitcoin"></i>
+<i class="fa fa-circle"></i>
+<i class="fa fa-plane"></i>
+<i class="fa fa-truck"></i>
+<i class="fa fa-tree"></i>
+<i class="fa fa-tablet"></i>
+<i class="fa fa-signal"></i>
+<i class="fa fa-phone"></i>
+<i class="fa fa-instagram"></i>
+<i class="fa fa-snapchat"></i>
+<i class="fa fa-facebook"></i>
+<i class="fa fa-firefox"></i>
+<i class="fa fa-quora"></i>
+<i class="fa fa-spotify"></i>
+<i class="fa fa-wordpress"></i>
+<i class="fa fa-youtube"></i>
+<i class="fa fa-yahoo"></i>
+<i class="fa fa-github"></i>
+<i class="fa fa-paypal"></i>
+<i class="fa fa-opera"></i>
+<i class="fa fa-linkedin"></i>
+
+
+var iconClass = ["fa fa-fire","fa fa-eye","fa fa-wifi","fa fa-plane","fa fa-rocket","fa fa-file","fa fa-car","fa fa-heartbeat","fa fa-book","fa fa-trophy","fa fa-bitcoin","fa fa-circle","fa fa-plane","fa fa-truck","fa fa-tree","fa fa-tablet","fa fa-signal","fa fa-phone","fa fa-instagram","fa fa-snapchat","fa fa-facebook","fa fa-firefox","fa fa-quora","fa fa-spotify","fa fa-wordpress","fa fa-youtube","fa fa-yahoo","fa fa-github","fa fa-paypal","fa fa-opera"]
