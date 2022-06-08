@@ -17,6 +17,7 @@ body{
 }
 .calender{
     background-color: rgb(241, 237, 237);
+    padding: 10px;
 }
 .monthYear{
     padding: 10px;
@@ -45,7 +46,7 @@ tbody{
 .btn{
     border: 1px solid black !important;
 }
-.monthYear .row{
+.row,.calender{
     border: 1px solid black;
 }
 thead tr{
