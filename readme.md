@@ -31,7 +31,7 @@ By default first accordion's information is visible, and others are hidden.
 => Wizard Form : Wizard form is multistep form. There are many levels of the form. There will be validation for the input fields as per our needs. The data will be stored in datatable which is made from jquery. There will be two buttons : Edit and Delete. Edit button will take data from the form and will fill it in the form so that we can change the data. Delete button will delete the particular data. After pressing edit button, two buttons will be shown : Cancel and Update. cancel button will reset the form and update button will change the data into the table.
 <br>
 
-### Task - 6 : Calculator
+### Task - 7 : Calculator
 
 => Create a calculator like Ubuntu basic calculator.
 List of buttons:<br>
@@ -44,3 +44,35 @@ List of buttons:<br>
 Bind the keyboard with your calculator, so the user can use the calculator without mouse.
 Must follow basic mathematical rules.
 Display error like: Malformed expression, For unusual input like: 5656/0 or 54*5145/*-+
+<br>
+
+### Task - 8 : Add more
+
+--> Add more buttons will add a similar box below the main box.<br>
+--> Add child will add a child in the respective parent.<br>
+--> Delete button will delete the child.<br>
+--> Submit button will append details of that parent (that parent only) below “SPECIFICATION”.<br>
+--> The specification part contains data from only the submitted table. <br>
+--> The order of the left side table and right side details will remain the same.<br>
+--> If someone submits 3rd table first and then submit 2nd table then at specification side first 2nd table will display and then 3rd table. Order of submission is not important. Order of the table is important.<br>
+--> If you add/delete a child after submitting that table then it will affect the right side when you submit that table a second time.
+<br>
+
+### Task - 8.2 : Features added in Add more
+
+--> Add Delete button to delete particular parent<br>
+--> Remove the submit button from the previous task.<br>
+--> When the user will write anything in the table at the same time that character will be added in the SPECIFICATION part.<br>
+--> All functionalities are the same as the previous task.
+<br>
+
+
+### Task - 9 : Calender
+
+--> The Left and right Arrow buttons will allow the user to move next and previous month.<br>
+--> The title will display the current month and year.<br>
+--> Highlight Today’s date.<br>
+--> Today Button: Click on this button to take at today’s date from anywhere.<br>
+--> Users can set any date and pressing on find date button will take the user on that day.<br>
+--> If the user sets only year and month then that month will open but the date will not highlight.<br>
+--> The first select box will give 1970 to 2070 options to select a year. The second select box will give 12 months as a select option. Based on the first two select boxes, a date will give options of date 1 to 31 or 30 or 29 or 28 according to month and year.
