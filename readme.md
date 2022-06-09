@@ -76,3 +76,28 @@ Display error like: Malformed expression, For unusual input like: 5656/0 or 54*5
 --> Users can set any date and pressing on find date button will take the user on that day.<br>
 --> If the user sets only year and month then that month will open but the date will not highlight.<br>
 --> The first select box will give 1970 to 2070 options to select a year. The second select box will give 12 months as a select option. Based on the first two select boxes, a date will give options of date 1 to 31 or 30 or 29 or 28 according to month and year.
+<br>
+
+
+### Task - 10 : Memory Game
+
+Create a webpage to design a memory game.
+1. Create a 6*4 clickable box grid as displayed in the following images
+2. Click on any box will show a pre-defined icon.
+3. When the user clicks on the 2nd box, match the icons. If icons are the same
+then display both icons and disable that box. If icons are not identical then 
+close both boxes after 2 seconds
+4. Once the user opens all boxes, display the message with the time and refresh
+button.
+5. The refresh button will close all boxes with new random icons. Do not refresh
+the page.
+Other Features:
+- Use font-awesome icons.
+- Select at least 50 icons then randomly display any 12 icons in each game.
+- Icon pair and location must be random in every game.
+
+Other Features:
+- Use font-awesome icons.
+- Select at least 50 icons then randomly display any 12 icons in each game.
+- Icon pair and location must be random in every game.
+- Every 12 pairs have a unique icon.

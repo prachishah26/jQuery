@@ -1,20 +1,20 @@
 $(document).ready(function () {
     
-        // Total classes to be add
-        var iconClass = ["fa fa-fire", "fa fa-eye", "fa fa-wifi", "fa fa-plane", "fa fa-rocket", "fa fa-file", "fa fa-car", "fa fa-heartbeat", "fa fa-book", "fa fa-trophy", "fa fa-bitcoin", "fa fa-circle", "fa fa-truck", "fa fa-tree", "fa fa-tablet", "fa fa-signal", "fa fa-phone", "fa fa-instagram", "fa fa-snapchat", "fa fa-facebook", "fa fa-firefox", "fa fa-quora", "fa fa-spotify", "fa fa-wordpress", "fa fa-youtube", "fa fa-yahoo", "fa fa-github", "fa fa-paypal", "fa fa-opera"]
+        // Total randomSelectedClasses to be add
+        var iconClass = ["fa fa-fire", "fa fa-eye", "fa fa-wifi", "fa fa-plane", "fa fa-rocket", "fa fa-file", "fa fa-car", "fa fa-heartbeat", "fa fa-book", "fa fa-trophy", "fa fa-bitcoin", "fa fa-circle", "fa fa-truck", "fa fa-tree", "fa fa-tablet", "fa fa-signal", "fa fa-phone", "fa fa-instagram", "fa fa-snapchat", "fa fa-facebook", "fa fa-firefox", "fa fa-quora", "fa fa-spotify", "fa fa-wordpress", "fa fa-youtube", "fa fa-yahoo", "fa fa-github", "fa fa-paypal", "fa fa-opera","fa fa-cube","fa fa-paintbrush","fa fa-heart","fa fa-chess-king","fa fa-dice-five","fa fa-key","fa fa-tv","fa fa-infinity","fa fa-hammer","fa fa-person","fa fa-envelope", "fa fa-9","fa fa-1","fa fa-bell","fa fa-brain","fa fa-bomb","fa fa-bicycle","fa fa-ban","fa fa-apple-whole","fa fa-a","fa fa-atom"]
     
-        var index = [], classes = [], match = [], countBox = 0,timeStart = false,startTime, duration;
+        var index = [], randomSelectedClasses = [], matchedPair = [], countBox = 0,timeStart = false,startTime, duration;
     
         shuffle(iconClass);
         uniqueCards(iconClass);
-        totalCards(classes);
-        console.log(classes);
+        totalCards(randomSelectedClasses);
+        console.log(randomSelectedClasses);
     
-        // this will append icon classes on boxes 
-        for (let i = 0; i <= classes.length; i++) {
-            $(".box").eq(i).find("i").addClass(classes[i])
+        // this will append icon Classes on boxes 
+        for (let i = 0; i <= randomSelectedClasses.length; i++) {
+            $(".box").eq(i).find("i").addClass(randomSelectedClasses[i])
         }
-    
+
         // hiding icons 
         $(".box > i").hide();
     
@@ -25,6 +25,7 @@ $(document).ready(function () {
                 timeStart = true;
             }
             if ($(this).find("i").hasClass("not")) {
+                // if box is matched and already open then nothing will happen on click 
             }
             else {
                 $(this).find("i").show();
@@ -37,23 +38,22 @@ $(document).ready(function () {
                             if ($(this).hasClass("not")) {
                             }
                             else {
-                                match.push($(element).attr("class").toString())
+                                matchedPair.push($(element).attr("class").toString())
                             }
     
                         })
-                        if (match[0] == match[1]) {
+                        if (matchedPair[0] == matchedPair[1]) {
                             $(".box > i:visible").addClass("not")
                         }
                         else {
                             $(".box").eq(index[0]).find("i").hide();
                             $(".box").eq(index[1]).find("i").hide();
-    
                         }
-                        match = [];
-                        index = [];
+                        matchedPair = [];index = [];
                         if ($(".box >i:visible").length == 24) {
                             duration = Date.now() - startTime;
-                            $(".statusOfWin").text(`You won the game in ${duration/1000} seconds!!!`).fadeOut(6000);
+                            $(".statusOfWin").text(`You won the game in ${duration/1000} seconds!!!`).fadeOut(10000);
+                            $(".refresh").show();
                         }
                     }
                 }, 200)
@@ -65,7 +65,7 @@ $(document).ready(function () {
             location.reload();
         })
     
-         // shuffle function - this function will shuffle all the classes randomly
+         // shuffle function - this function will shuffle all the randomSelectedClasses randomly
          function shuffle(iconClass) {
             var storeValue;
             for (let i = 0; i < iconClass.length; i++) {
@@ -79,7 +79,7 @@ $(document).ready(function () {
         // after shuffling, this function will choose 12 cards from choosen cards 
         function uniqueCards(iconClass) {
             for (let j = 0; j < iconClass.length; j++) {
-                classes.push(iconClass[j])
+                randomSelectedClasses.push(iconClass[j])
                 if (j == 11) {
                     break;
                 }
@@ -87,16 +87,16 @@ $(document).ready(function () {
         }
     
          // this function will make exactly 24 cards to play 
-         function totalCards(classes) {
+         function totalCards(randomSelectedClasses) {
             let count = 0
-            for (let i = 0; i < classes.length; i++) {
-                classes.push(classes[i]);
+            for (let i = 0; i < randomSelectedClasses.length; i++) {
+                randomSelectedClasses.push(randomSelectedClasses[i]);
                 ++count;
                 if (count == 12) {
                     break;
                 }
             }
-            shuffle(classes);
+            shuffle(randomSelectedClasses);
         }
     })
     
