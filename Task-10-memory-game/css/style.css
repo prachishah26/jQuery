@@ -24,6 +24,9 @@ body{
     margin:15px 30px 15px;
     font-size: 30px;
     border: 1px solid black;
+    /* box-shadow: 6px 8px rgb(229, 196, 201); */
+    /* box-shadow: 0 5px 11px rgb(0 0 0 / 0.2); */
+    box-shadow: 0 5px 11px rgba(160, 20, 132, 0.4);
 }
 
 .box i{
