@@ -7,22 +7,25 @@ body{
 .container{
     max-width: 80%;
     height: 550px;
-    width: 1300px;
+    width: 1000px;
     background-color: rgb(232, 239, 242);
+    padding: 20px;
 }
 
 .d-flex{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
+    height: 50px;
 }
 
 .box{
-    background-color: skyblue;
+    background:linear-gradient(pink,lightblue);
     height: 70px;
     width: 90px;
     margin:15px 30px 15px;
     font-size: 30px;
+    border: 1px solid black;
 }
 
 i{
@@ -40,4 +43,17 @@ i{
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+.btn{
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: green;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.statusOfWin{
+    color: green;
+    font-size: 20px;
 }
