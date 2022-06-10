@@ -1,45 +1,40 @@
 $(document).ready(function () {
-    var HighestNumber, totalDigits ,digit;
 
-    $(".combination-btn").click(function () {
-        HighestNumber = $(".first-num").val();
-        totalDigits = $(".second-num").val();
-        let start = 1;
-        digit = "";
-        start = 1;
-        var count;
+    var combinationResult = [], combination,count;
 
-        for (let i = 1 ; i<= HighestNumber ; i++ ){
-            digit = ""+i
-            for (let j=1; j<= totalDigits; j++){
-                if(j>parseInt(digit)){
-                    digit += j
-                }
-                console.log(digit)
-            }
-        }
+    $(".combination-btn").click(function(){
+        $(".result").empty();
+        count = 1;
+        var startsFrom = 1;
+        var highestNumber = $(".first-num").val();
+        var length = $(".second-num").val();
+        combination = combinations(startsFrom,highestNumber,length);
     })
+
+    // function for combination 
+    function combinations(startsFrom,highestNumber, length) {
+        // console.log("inside combination");
+        for (let i = startsFrom; i <= highestNumber; i++) {
+            combinationResult.push(i);
+            // console.log(combinationResult);
+            // console.log("i",i)
+            // console.log("")
+            combinations(i + 1,highestNumber, length - 1);
+
+            // console.log("after executed");
+            combinationResult.splice(-1,1);
+        }
+
+        if (length == 0) {
+            $(".result").append(`${count}) &nbsp;`);
+            ++count;
+            // console.log("if");
+            for (let i = 0; i < combinationResult.length; i++) {
+                $(".result").append(combinationResult[i]);
+                // console.log("combinationalResult",combinationResult)
+            }
+            $(".result").append(`<br>`);
+            // console.log("new line");
+        }
+    }
 })
-
-
-// for (let i = start; i<=HighestNumber; i++){
-//     digit += i
-//     console.log(digit)
-//     if(digit.length == totalDigits){
-//         start += 1;
-//         digit = ""
-        
-//     }
-// }
-
-
-// for (let i =1; i<=HighestNumber; i++){
-//     for (let j = 1; j <=totalDigits;j++){
-//         if (j<i){
-//             digit += j
-//             console.log(digit)
-           
-//         }
-//     }
-//     digit = ""
-// }       
