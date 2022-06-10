@@ -8,8 +8,8 @@ $(document).ready(function () {
         var startsFrom = 1;
         var highestNumber = $(".first-num").val();
         var length = $(".second-num").val();
-        if (length <= 0){
-            $(".result").text("Length Should be atleast 1 !!!");
+        if (length <= 0 || length >highestNumber){
+            $(".result").text("Length Should be between 1 to Highest number!!!");
         }
         else{
             combination = combinations(startsFrom,highestNumber,length);
