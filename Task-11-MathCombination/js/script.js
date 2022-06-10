@@ -8,12 +8,17 @@ $(document).ready(function () {
         var startsFrom = 1;
         var highestNumber = $(".first-num").val();
         var length = $(".second-num").val();
-        combination = combinations(startsFrom,highestNumber,length);
+        if (length <= 0){
+            $(".result").text("Length Should be atleast 1 !!!");
+        }
+        else{
+            combination = combinations(startsFrom,highestNumber,length);
+        }
     })
 
     // function for combination 
     function combinations(startsFrom,highestNumber, length) {
-        // console.log("inside combination");
+        console.log("inside combination");
         for (let i = startsFrom; i <= highestNumber; i++) {
             combinationResult.push(i);
             // console.log(combinationResult);
