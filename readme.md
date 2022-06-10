@@ -101,3 +101,19 @@ Other Features:
 - Select at least 50 icons then randomly display any 12 icons in each game.
 - Icon pair and location must be random in every game.
 - Every 12 pairs have a unique icon.
+
+
+### Task - 11 : Mathematical operations
+
+--> Input A: Any number from 1 to 9. (For example) <br>
+--> Input B. Any number from 1 to Input A.<br>
+--> Output. <br>
+- Take a number from input and make as many possible combinations from it which have size as input.<br>
+- If Input A: 5
+- Input B: 2
+- Output will be: 12 13 14 15 23 24 25 34 35 45 <br>
+--> One More Example:<br>
+- InputA: 9
+- InputB: 7
+- Output:
+- 1234567 1234568 1234569 1234578 1234579 1234589 1234678 1234679 12346891234789 1235678 1235679 1235689 1235789 1236789 1245678 1245679 12456891245789 1246789 1256789 1345678 1345679 1345689 1345789 1346789 13567891456789 2345678 2345679 2345689 2345789 2346789 2356789 2456789 3456789.
