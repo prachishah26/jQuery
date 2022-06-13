@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // function for combination 
     function combinations(startsFrom,highestNumber, length) {
-        console.log("inside combination");
+        // console.log("inside combination");
         for (let i = startsFrom; i <= highestNumber; i++) {
             combinationResult.push(i);
             // console.log(combinationResult);

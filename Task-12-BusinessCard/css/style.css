@@ -1,0 +1,50 @@
+body{
+    overflow: hidden;
+}
+.left-part{
+    background: linear-gradient(blue,rgb(52, 3, 65));
+    height: 100vh;
+    color: white;
+}
+.frontCard{
+    height: 220px !important;
+    width: 420px;
+    background-color: white;
+    border: 1px solid black;
+}
+.frontCard i{
+    font-size: 45px;
+}
+.backCard{
+    height: 220px !important;
+    width: 420px;
+    background-color: white;
+    border: 1px solid black;
+}
+.business-card{
+    flex-direction: column;
+    justify-content: center !important;
+    text-align: center !important;
+    background-color: white;
+}
+.company-logo, .vertical-line, .card-logo{
+    height: 220px;
+}
+.vertical-line{
+    padding: 0px;
+}
+
+.line{
+    border: 1px solid black;
+    height: 170px;
+}
+
+.card-details h5{
+    text-align: left;
+}
+label.error{
+    color: red !important;
+}
+.standardCard i.fa-star{
+    font-size: 40px;
+}
