@@ -117,3 +117,23 @@ Other Features:
 - InputB: 7
 - Output:
 - 1234567 1234568 1234569 1234578 1234579 1234589 1234678 1234679 12346891234789 1235678 1235679 1235689 1235789 1236789 1245678 1245679 12456891245789 1246789 1256789 1345678 1345679 1345689 1345789 1346789 13567891456789 2345678 2345679 2345689 2345789 2346789 2356789 2456789 3456789.
+<br>
+
+### Task - 12 : Business-card
+
+- It contains wizard area in which there are three parts : Template, Theme and personalization.
+- QR code : Display QR code in every card which redirects the user to the link of their website.
+Front and Back:
+- Display how the business card will look like
+- Every change must reflect on the change of every event.
+- For example, If you change the theme color then it instantly reflects at the display
+area.
+- By default Front and the Back area contains descriptions like “<name of your
+compnay>”
+Download:
+- The download button will validate the Personalization form (Wizard - 3)
+- If all fields are validated then it will allow the user to download PDF.
+Reset:
+- Reset button will clear all the fields in the wizard area
+- It will take the user to the Templates (Wizard - 1)
+- Reset button will clear all the designs in the display area

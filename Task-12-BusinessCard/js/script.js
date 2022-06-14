@@ -18,8 +18,8 @@ $(document).ready(function () {
             $(".cleanCard").show();
             $(".standardCard").hide();
             colorParameters();
-
         }
+
         if ($(this).attr("value") == "standard") {
             $(".cleanCard").hide();
             $(".standardCard").show();
@@ -54,7 +54,7 @@ $(document).ready(function () {
         $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
     })
 
-
+    
     // jQuery validators
     jQuery.validator.addMethod("lettersOnly", function (value, element) {
         return this.optional(element) || /^[a-z ]+$/i.test(value);
@@ -73,7 +73,7 @@ $(document).ready(function () {
     }, "Enter a valid email !!");
 
     $.validator.setDefaults({ ignore: [] });
-    
+
     // form validation
     $(".form").validate({
         ignore: [],
