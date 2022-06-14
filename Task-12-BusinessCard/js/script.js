@@ -176,7 +176,7 @@ $(document).ready(function () {
             let color = $("#lightColor").val();
             $(".standardCard .frontCard").css("background-color", color);
             $(".cleanCard .frontCard").css("background-color", color);
-        }, 200);
+        }, 100);
     })
 
     // font color 
@@ -185,7 +185,7 @@ $(document).ready(function () {
             let color = $("#mainColor").val();
             $(".standardCard .frontCard,.backCard").css("color", color);
             $(".cleanCard .frontCard,.backCard").css("color", color);
-        }, 200);
+        }, 100);
     })
 
     // back card background color 
@@ -194,7 +194,7 @@ $(document).ready(function () {
             let color = $("#darkColor").val();
             $(".standardCard .backCard").css("background-color", color);
             $(".cleanCard .backCard").css("background-color", color);
-        }, 200);
+        }, 100);
     })
 
     // on reset button click even => colors will set by default 
