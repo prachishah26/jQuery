@@ -11,23 +11,32 @@ $(document).ready(function () {
         $(".area").hide().eq(index).show();
     })
 
+    // business card as per selection of radio button 
     $('input[type="radio"]').click(function () {
         if ($(this).attr("value") == "clean") {
             $(".cleanCard").show();
             $(".standardCard").hide();
+            $("#lightColor").val("#FFFFFF");
+            $("#mainColor").val("#000000");
+            $("#darkColor").val("#FFFFFF");
         }
         if ($(this).attr("value") == "standard") {
             $(".cleanCard").hide();
             $(".standardCard").show();
+            // $(".standardCard .frontCard").css("background-color", "#87CEEB")
+            // $(".standardCard .frontCard,.backCard").css("color", "#000000");
+            // $(".standardCard .backCard").css("background-color", "#4B0082");
         }
     });
 
+    // on write logo in Input, logo will change 
     $(document).on("keyup", "#logo", function () {
         text = $(this).val()
         $(".company-logo i").removeClass();
         $(".company-logo i").addClass(`fa-solid ${text}`)
     })
 
+    // input keyup event => it will parallely show on card 
     $("input").keyup(function () {
         id = $(this).attr("id")
         text = $(this).val()
@@ -37,7 +46,7 @@ $(document).ready(function () {
     // QR CODE 
     var width = 200
     var height = 180
-    data = 123
+    data = "Please enter URL"
     var img = '<img style="margin: 0 auto" src="https://chart.googleapis.com/chart?chs=' + width + 'x' + height + '&cht=qr&chl=' + data + '">';
     $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
 
@@ -64,6 +73,7 @@ $(document).ready(function () {
 
     // form validation
     $(".form").validate({
+        ignore: [],
         rules: {
             companyName: {
                 required: true,
@@ -97,7 +107,6 @@ $(document).ready(function () {
             },
             contact: {
                 required: true,
-                numbersonly: true,
                 minlength: 10,
                 maxlength: 10
             },
@@ -139,7 +148,6 @@ $(document).ready(function () {
             },
             contact: {
                 required: "Enter your Contact number",
-                numbersonly: "Numbers only !",
                 minlength: "Contact number should be 10 digits only !!",
                 maxlength: "Contact number should be 10 digits only !!",
             },
@@ -164,6 +172,7 @@ $(document).ready(function () {
         }
     })
 
+    // website keyup function 
     $("#website").keyup(function () {
         data = $(this).val();
         console.log(data)
@@ -171,107 +180,106 @@ $(document).ready(function () {
         $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
     })
 
-    // $("#lightColor").on("change",function () {
-       
-    //     colorvalue = $(this).val();
-    //     console.log(colorvalue)
-    //     $(".standardCard .frontCard").css("background-color", colorvalue)
-    // })
-
-    $("#lightColor").change(function(){
-        colorvalue = $(this).val();
-        console.log(colorvalue);
-        $(".standardCard .frontCard").css("background-color", colorvalue);
+    $("#lightColor").click(function () {
+        let colorValue = setInterval(() => {
+            let color = $("#lightColor").val();
+            $(".standardCard .frontCard").css("background-color", color);
+            $(".cleanCard .frontCard").css("background-color", color);
+        }, 200);
     })
 
-    $("#mainColor").click(function(){        
-        colorvalue = $(this).val();
-        console.log(colorvalue)
-        $(".standardCard .frontCard,.backCard").css("color", colorvalue);
+    $("#mainColor").click(function () {
+        colorValue = setInterval(() => {
+            let color = $("#mainColor").val();
+            $(".standardCard .frontCard,.backCard").css("color", color);
+            $(".cleanCard .frontCard,.backCard").css("color", color);
+        }, 200);
     })
-    
+
     $("#darkColor").click(function () {
-        colorvalue = $(this).val();
-        // console.log(colorvalue)
-        $(".standardCard .backCard").css("background-color", colorvalue);
+        colorValue = setInterval(() => {
+            let color = $("#darkColor").val();
+            $(".standardCard .backCard").css("background-color", color);
+            $(".cleanCard .backCard").css("background-color", color);
+        }, 200);
     })
 
     $(".reset").click(function () {
-        $("#lightColor").val("#87CEEB");
-        $(".standardCard .frontCard").css("background-color", "white")
-        $("#mainColor").val("#A020F0");
-        $(".standardCard .frontCard,.backCard").css("color", "black");
-        $("#darkColor").val("#4B0082");
-        $(".standardCard .backCard").css("background-color", "white");
+        clearInterval(colorvalue);
+        $("#lightColor").val("#FFFFFF");
+        $("#mainColor").val("000000");
+        $("#darkColor").val("#FFFFFF");
+        if ($('input[type="radio"]').attr("value") == "clean") {
+            clearInterval(colorvalue)
+            $(".cleanCard .frontCard").css("background-color", "#FFFFFF")
+            $(".cleanCard .frontCard,.backCard").css("color", "#000000");
+            $(".cleanCard .backCard").css("background-color", "#FFFFFF");
+        }
+        else {
+            $(".standardCard .frontCard").css("background-color", "#FFFFFF")
+            $(".standardCard .frontCard,.backCard").css("color", "#000000");
+            $(".standardCard .backCard").css("background-color", "#FFFFFF");
+        }
+
     })
 
     $.validator.setDefaults({ ignore: [] });
 
     $(".btn-download").click(function (e) {
         if ($(".form").valid()) {
-            var pdf = new jsPDF();
-            section = $(".business-card")
-            page = function () {
-                pdf.save("BusinessCard.pdf")
-            }
-            pdf.addHTML(section, page)
-            pdf.addImage("https://chart.googleapis.com/chart?chs=' + width + 'x' + height + '&cht=qr&chl=' + data", 'JPEG', 15, 40, 180, 160)
+            Convert_HTML_To_PDF()
         }
 
         else {
             console.log("download is pressed");
-            $(".area").hide().eq(2).show();
+            $(".area").hide();
+            $(".personalization").show();
         }
         e.preventDefault();
     })
 })
 
 
+function Convert_HTML_To_PDF() {
+    var elementHTML = document.getElementById('business-card');
 
+    html2canvas(elementHTML, {
+        useCORS: true,
+        onrendered: function (canvas) {
+            var pdf = new jsPDF('p', 'pt', 'letter');
 
+            var pageHeight = 980;
+            var pageWidth = 900;
+            for (var i = 0; i <= elementHTML.clientHeight / pageHeight; i++) {
+                var srcImg = canvas;
+                var sX = 0;
+                var sY = pageHeight * i; // start 1 pageHeight down for every new page
+                var sWidth = pageWidth;
+                var sHeight = pageHeight;
+                var dX = 0;
+                var dY = 0;
+                var dWidth = pageWidth;
+                var dHeight = pageHeight;
 
+                window.onePageCanvas = document.createElement("canvas");
+                onePageCanvas.setAttribute('width', pageWidth);
+                onePageCanvas.setAttribute('height', pageHeight);
+                var ctx = onePageCanvas.getContext('2d');
+                ctx.drawImage(srcImg, sX, sY, sWidth, sHeight, dX, dY, dWidth, dHeight);
 
+                var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
+                var width = onePageCanvas.width;
+                var height = onePageCanvas.clientHeight;
 
+                if (i > 0) // if we're on anything other than the first page, add another page
+                    pdf.addPage(612, 864); // 8.5" x 12" in pts (inches*72)
 
+                pdf.setPage(i + 1); // now we declare that we're working on that page
+                pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width * .62), (height * .62)); // add content to the page
+            }
 
-
-// function demoFromHTML() {
-//     var pdf = new jsPDF('p', 'pt', 'letter');
-//     // source can be HTML-formatted string, or a reference
-//     // to an actual DOM element from which the text will be scraped.
-//     var source = $('#business-card').html();
-
-//     // we support special element handlers. Register them with jQuery-style 
-//     // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-//     // There is no support for any other type of selectors 
-//     // (class, of compound) at this time.
-//     specialElementHandlers = {
-//         // element with id of "bypass" - jQuery style selector
-//         '#bypassme': function (element, renderer) {
-//             // true = "handled elsewhere, bypass text extraction"
-//             return true
-//         }
-//     };
-//     margins = {
-//         top: 80,
-//         bottom: 60,
-//         left: 40,
-//         width: 522
-//     };
-//     // all coords and widths are in jsPDF instance's declared units
-//     // 'inches' in this case
-//     pdf.fromHTML(
-//         source, // HTML string or DOM elem ref.
-//         margins.left, // x coord
-//         margins.top, { // y coord
-//         'width': margins.width, // max width of content on PDF
-//         'elementHandlers': specialElementHandlers
-//     },
-
-//         function (dispose) {
-//             // dispose: object with X, Y of the last line add to the PDF 
-//             //          this allow the insertion of new lines after html
-//             pdf.save('Test.pdf');
-//         }, margins
-//     );
-// }
+            // Save the PDF
+            pdf.save('document.pdf');
+        }
+    });
+}

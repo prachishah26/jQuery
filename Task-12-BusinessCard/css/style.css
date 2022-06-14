@@ -46,5 +46,8 @@ label.error{
     color: red !important;
 }
 .standardCard i.fa-star{
-    font-size: 40px;
+    font-size: 30px;
+}
+.col-1{
+    width: 8px;
 }
