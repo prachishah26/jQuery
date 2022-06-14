@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // global variables 
-    var text, data, colorvalue;
+    var index, text, data;
 
     // wizard area show at start 
     $(".area").hide().first().show();
@@ -17,7 +17,7 @@ $(document).ready(function () {
         if ($(this).attr("value") == "clean") {
             $(".cleanCard").show();
             $(".standardCard").hide();
-            colorParameters()
+            colorParameters();
 
         }
         if ($(this).attr("value") == "standard") {
@@ -28,45 +28,49 @@ $(document).ready(function () {
 
     // on write logo in Input, logo will change 
     $(document).on("keyup", "#logo", function () {
-        text = $(this).val()
+        text = $(this).val();
         $(".company-logo i").removeClass();
-        $(".company-logo i").addClass(`fa-solid ${text}`)
-    })
-
-    // input keyup event => it will parallely show on card 
-    $("input").keyup(function () {
-        id = $(this).attr("id")
-        text = $(this).val()
-        $(`.${id}`).text(text)
+        $(".company-logo i").addClass(`fa-solid ${text}`);
     })
 
     // QR CODE 
-    var width = 200
-    var height = 180
-    data = "Please enter URL"
+    var width = 200;
+    var height = 180;
+    data = "Please enter URL";
     var img = '<img style="margin: 0 auto" src="https://chart.googleapis.com/chart?chs=' + width + 'x' + height + '&cht=qr&chl=' + data + '">';
     $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
 
+    // input keyup event => it will parallely show on card 
+    $("input").keyup(function () {
+        id = $(this).attr("id");
+        text = $(this).val();
+        $(`.${id}`).text(text);
+    })
+    // website keyup function 
+    $("#website").keyup(function () {
+        data = $(this).val();
+        console.log(data);
+        img = '<img style="margin: 0 auto" src="https://chart.googleapis.com/chart?chs=' + width + 'x' + height + '&cht=qr&chl=' + data + '">';
+        $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
+    })
+
 
     // jQuery validators
-    jQuery.validator.addMethod("lettersonly", function (value, element) {
+    jQuery.validator.addMethod("lettersOnly", function (value, element) {
         return this.optional(element) || /^[a-z ]+$/i.test(value);
     }, "Letters only !!");
-    jQuery.validator.addMethod("letterswithdot", function (value, element) {
+    jQuery.validator.addMethod("lettersWithDot", function (value, element) {
         return this.optional(element) || /^[a-z. ]+$/i.test(value);
     }, "Letters only !!");
-    jQuery.validator.addMethod("letterswithhyphen", function (value, element) {
+    jQuery.validator.addMethod("lettersWithHyphen", function (value, element) {
         return this.optional(element) || /^[a-z-]+$/i.test(value);
     }, "Letters only !!");
-    jQuery.validator.addMethod("numberlettersonly", function (value, element) {
+    jQuery.validator.addMethod("numberLettersOnly", function (value, element) {
         return this.optional(element) || /^[1-9a-zA-Z ]+$/i.test(value);
-    }, "Numbers only !!");
-    jQuery.validator.addMethod("numbersonly", function (value, element) {
-        return this.optional(element) || /^[1-9]+$/i.test(value);
-    }, "Numbers only !!");
-    jQuery.validator.addMethod("validemail", function (value, element) {
+    }, "Numbers and letters only !!");
+    jQuery.validator.addMethod("validEmail", function (value, element) {
         return this.optional(element) || /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
-    }, "Letters only !!");
+    }, "Enter a valid email !!");
 
     // form validation
     $(".form").validate({
@@ -74,13 +78,13 @@ $(document).ready(function () {
         rules: {
             companyName: {
                 required: true,
-                letterswithdot: true,
+                lettersWithDot: true,
                 minlength: 2,
                 maxlength: 20
             },
             logo: {
                 required: true,
-                letterswithhyphen: true,
+                lettersWithHyphen: true,
                 minlength: 2,
                 maxlength: 20
             },
@@ -92,13 +96,13 @@ $(document).ready(function () {
             },
             fname: {
                 required: true,
-                lettersonly: true,
+                lettersOnly: true,
                 minlength: 2,
                 maxlength: 20
             },
             designation: {
                 required: true,
-                numberlettersonly: true,
+                numberLettersOnly: true,
                 minlength: 2,
                 maxlength: 20
             },
@@ -109,19 +113,19 @@ $(document).ready(function () {
             },
             email: {
                 required: true,
-                validemail: true,
+                validEmail: true,
             }
         },
         messages: {
             companyName: {
                 required: "Enter your company name",
-                lettersonly: "letters and (.) only !",
+                lettersWithDot: "letters and (.) only !",
                 minlength: "Enter at least 2 characters",
                 maxlength: "First name too long more than 20 characters",
             },
             logo: {
                 required: "Enter your company name",
-                letterswithhyphen: "letters and (-)  only !",
+                lettersWithHyphen: "letters and (-)  only !",
                 minlength: "Enter at least 2 characters",
                 maxlength: "First name too long more than 20 characters",
             },
@@ -133,13 +137,13 @@ $(document).ready(function () {
             },
             fname: {
                 required: "Enter your Full name",
-                lettersonly: "letters only !",
+                lettersOnly: "letters only !",
                 minlength: "Enter at least 2 characters",
                 maxlength: "First name too long more than 20 characters",
             },
             designation: {
                 required: "Enter your Designation",
-                numberlettersonly: "letters or numbers only !",
+                numberLettersOnly: "letters or numbers only !",
                 minlength: "Enter at least 2 characters",
                 maxlength: "Enter max length upto 20 characters ",
             },
@@ -150,10 +154,8 @@ $(document).ready(function () {
             },
             email: {
                 required: "Enter your Email address",
-                validemail: "Enter a valid email !"
+                validEmail: "Enter a valid email !"
             }
-
-
         },
         errorPlacement: function (error, element) {
             if (element.is(":radio")) {
@@ -162,19 +164,10 @@ $(document).ready(function () {
             if (element.is(":checkbox")) {
                 error.appendTo(element.parent("div").next("div"));
             }
-
             else { // This is the default behavior 
                 error.insertAfter(element);
             }
         }
-    })
-
-    // website keyup function 
-    $("#website").keyup(function () {
-        data = $(this).val();
-        console.log(data)
-        img = '<img style="margin: 0 auto" src="https://chart.googleapis.com/chart?chs=' + width + 'x' + height + '&cht=qr&chl=' + data + '">';
-        $(".backCard").html(`${img} </br> <p class="text-center">Scan me</p>`);
     })
 
     // frontcard background color
