@@ -207,7 +207,7 @@ $(document).ready(function () {
     // on reset button click even => colors will set by default 
     $(".reset").click(function () {
         colorParameters();
-        
+
     })
 
     $.validator.setDefaults({ ignore: [] });
@@ -216,15 +216,16 @@ $(document).ready(function () {
     $(".btn-download").click(function (e) {
         if ($(".form").valid()) {
             Convert_HTML_To_PDF()
+            $('.form').trigger("reset");
+            colorParameters();
+            defaultName();
         }
         else {
             $(".area").hide();
             $(".personalization").show();
         }
         e.preventDefault();
-        $('.form').trigger("reset");
-        colorParameters();
-        defaultName();
+
     })
 
     // by default color parameters 
@@ -235,7 +236,7 @@ $(document).ready(function () {
     }
 
     // on submit the data will be remove 
-    function defaultName(){
+    function defaultName() {
         $(".email").text("abc@gmail.com")
         $(".fname").text("Person Name")
         $(".designation").text("Designation")
@@ -248,7 +249,7 @@ $(document).ready(function () {
     }
 
     function Convert_HTML_To_PDF() {
-         // pdf download function 
+        // pdf download function 
         var elementHTML = document.getElementById('business-card');
         html2canvas(elementHTML, {
             useCORS: true,
