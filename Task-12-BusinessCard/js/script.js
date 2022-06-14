@@ -72,6 +72,8 @@ $(document).ready(function () {
         return this.optional(element) || /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
     }, "Enter a valid email !!");
 
+    $.validator.setDefaults({ ignore: [] });
+    
     // form validation
     $(".form").validate({
         ignore: [],
@@ -200,10 +202,9 @@ $(document).ready(function () {
     // on reset button click even => colors will set by default 
     $(".reset").click(function () {
         colorParameters();
-
     })
 
-    $.validator.setDefaults({ ignore: [] });
+    
 
     // on click download button click event 
     $(".btn-download").click(function (e) {
