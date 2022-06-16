@@ -47,6 +47,7 @@ $(document).ready(function () {
                     lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length
                     $("select").eq(lengthOfParentUl).append(`<option data-number='${count}'>${inputText}</option>`);
                     ++count;
+                    clearInput();
                 }
                 else{
                     // last value is not none in select 
