@@ -6,7 +6,7 @@ $(document).ready(function () {
     $(".add").click(function () {
         inputText = $("input").val();
         if (inputText != "") {
-            // if text is not empty 
+            // if input text is not empty 
 
             if ($(".selectOptions select").length == 1) {
                 // if only one select element 
@@ -18,13 +18,12 @@ $(document).ready(function () {
                     clearInput();
                 }
                 else {
-                    console.log("this else is executed");
                     // child is selected in option 
                     selectValueData = $(".selectOptions option:selected").data("number");
                     $("ul").find(`li[data-count='${selectValueData}']`).append(`<ul><li data-count='${count}'>${inputText}</li></ul>`);
                     $(".selectOptions").append(`<br><select class='p-2'><option value='none'>none</option></select>`);
-                    lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length
-                    $("select").eq(lengthOfParentUl).append(`<option data-number='${count}'>${inputText}</option>`)
+                    lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length;
+                    $("select").eq(lengthOfParentUl).append(`<option data-number='${count}'>${inputText}</option>`);
                     ++count;
                     clearInput();
                 }
@@ -37,11 +36,11 @@ $(document).ready(function () {
                     selectValueData = $(".selectOptions select").eq($("select").length-2).find("option:selected").data("number");
                     console.log(selectValueData);
                     if($("ul").find(`li[data-count='${selectValueData}']`).has("ul")){
-                        
-                        $("ul").find(`li[data-count='${selectValueData}']`).find("ul").eq(0).append(`<li data-count='${count}'>${inputText}</li>`)
+                        // if li has child as ul 
+                        $("ul").find(`li[data-count='${selectValueData}']`).find("ul").eq(0).append(`<li data-count='${count}'>${inputText}</li>`);
                     }
                     else{
-                        
+                        // li has not child as ul 
                         $("ul").find(`li[data-count='${selectValueData}']`).append(`<ul><li data-count='${count}'>${inputText}</li></ul>`);
                     }
                     lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length
@@ -55,20 +54,17 @@ $(document).ready(function () {
                     // child is selected in option 
                     selectValueData = $(".selectOptions option:selected").data("number");
                     if($("ul").find(`li[data-count='${selectValueData}']`).children().length>1){
+                        // if li has already ul 
                         console.log($(`li[data-count='${selectValueData}']`).children().length)
                         console.log("if ul")
                         $(".dispayMenu").find(`li[data-count='${selectValueData}']`).children("ul").append(`<li data-count='${count}'>${inputText}</li>`)
                     }
                     else{
-                        console.log("else ul")
-                        console.log("count",count)
-                        
+                        // if li hasn't ul                          
                         selectValueData = $(".selectOptions select").last().find("option:selected").data("number")
-                        console.log("selectValueData",selectValueData)
                         element = $("ul").find(`li[data-count='${selectValueData}']`)
                         element.append(`<ul><li data-count='${count}'>${inputText}</li></ul>`);
                     }
-                    // $("ul").find(`li[data-count='${selectValueData}']`).append(`<ul><li data-count='${count}'>${inputText}</li></ul>`);
                     $(".selectOptions").append(`<br><select class='p-2'><option value='none'>none</option></select>`);
                     lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length
                     $("select").eq(lengthOfParentUl).append(`<option data-number='${count}'>${inputText}</option>`);
@@ -91,6 +87,3 @@ $(document).ready(function () {
         }
     })
 })
-
-
-// && $("option:selected").parent("select").index() != -1
