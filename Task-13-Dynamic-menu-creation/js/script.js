@@ -105,7 +105,7 @@ $(document).ready(function () {
                 for (let i = 0; i < lengthOfChildUl; i++) {
                     childLiData = $(".dispayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').eq(i).find('li:first').data("count");
                     childLiText = $(".dispayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').eq(i).find('li:first').data("text");
-                    console.log("childLiData",childLiData)
+                    
                     $(".selectOptions select").last().append(`<option data-number=${childLiData}> ${childLiText}</option>`);
                 }
             }

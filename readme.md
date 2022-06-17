@@ -137,3 +137,11 @@ Reset:
 - Reset button will clear all the fields in the wizard area
 - It will take the user to the Templates (Wizard - 1)
 - Reset button will clear all the designs in the display area
+<br>
+
+
+### Task - 13 : Dynamic menu creation
+
+- one Text box and submit button with select element which shows select-child initially.
+- User can add list item at any number of levels. 
+- User input some text and hit on submit button will add one list-item at right side. And one select box will create with two options one is “PARENT” and one is user’s input.
