@@ -8,3 +8,6 @@ select{
     margin-bottom: 45px;
     padding: 7px;
 }
+.btn{
+    min-width: 70px;
+}
