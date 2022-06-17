@@ -14,7 +14,7 @@ $(document).ready(function () {
                 if ($(".selectOptions select").val() == "none") {
                     // if no child element is selected 
                     $(".unOrderedList").append(`<li data-count='${count}' data-text='${inputText}'>${inputText}</li>`);
-                    $("#select1").append(`<option data-number='${count}'>${inputText}</option>`);
+                    $("#firstSelect").append(`<option data-number='${count}'>${inputText}</option>`);
                     ++count;
                     clearInput();
                 }
