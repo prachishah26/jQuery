@@ -82,9 +82,11 @@ $(document).ready(function () {
         }
     })
     function clearInput() {
+        // it will clear input text 
         $("input").val("");
     }
     $(document).on("change", "select", function () {
+        // when changes happen in select element then below code will executes 
         selectedValue = $(this).find("option:selected");
         selectDataNumber = $(this).find("option:selected").data("number");
         
