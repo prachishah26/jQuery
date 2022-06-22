@@ -101,7 +101,7 @@ $(document).ready(function () {
                     $(".selectOptions").append(`<br><select class='p-2'><option value='none'>none</option></select>`);
             
                     let lengthOfChildUl = $(".dispayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').children('li').length;
-                    console.log(lengthOfChildUl)
+                    // console.log(lengthOfChildUl)
                     
                     for (let i = 0; i < lengthOfChildUl; i++) {
                         childLiData = $(".dispayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul:first').children('li').eq(i).data("count");
@@ -113,6 +113,3 @@ $(document).ready(function () {
             }
         })
     })
-   
-    
-    
