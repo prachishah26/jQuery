@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    
+
     // Global variables
-    let inputText, count = 1, selectValueData, lengthOfParentUl, element, childLiData,selectDataNumber,dataCount,dataText;
+    let inputText, count = 1, selectValueData, lengthOfParentUl, element, childLiData, selectDataNumber, dataCount, dataText;
 
     //add button click event 
     $(".add").click(function () {
@@ -22,11 +22,11 @@ $(document).ready(function () {
                     // child is selected in option 
                     console.log("hi")
                     selectValueData = $(".selectOptions option:selected").data("number");
-                    
+
                     $("ul").find(`li[data-count='${selectValueData}']`).append(`<ul><li data-count='${count}' data-text='${inputText}'><h6>${inputText}</h6><button class="btn btn-primary edit">Edit</button><button class="btn btn-primary delete">Delete</button></li></ul>`);
-                    
+
                     $(".selectOptions").append(`<select class='p-2 col-12'><option value='none'>none</option></select>`);
-                    
+
                     lengthOfParentUl = $("ul").find(`li[data-count='${selectValueData}']`).parents("ul").length;
                     $("select").eq(lengthOfParentUl).append(`<option data-number='${count}'>${inputText}</option>`);
                     ++count;
@@ -54,7 +54,6 @@ $(document).ready(function () {
                     $("select").eq(lengthOfParentUl).append(`<option data-number='${count}' data-text='${inputText}'>${inputText}</option>`);
                     ++count;
                     clearInput();
-                    //---------------------
                 }
                 else {
                     // last value is not none in select 
@@ -86,29 +85,29 @@ $(document).ready(function () {
             alert("Please enter value first !!!");
         }
     })
-    
+
     $(document).on("change", "select", function () {
         // when changes happen in select element then below code will executes 
         selectedValue = $(this).find("option:selected");
         selectDataNumber = $(this).find("option:selected").data("number");
-        
+
         if (selectedValue.val() == "none") {
             // if selected value is none then it will remove all below select elements 
             $(this).nextAll().remove();
         }
         else {
-            if ($(".displayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').length){
+            if ($(".displayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').length) {
                 // here if the menu list is selected and if it has child then it will create select option below and add the data of child.
-                
+
                 $(".selectOptions").append(`<select class='p-2 col-12'><option value='none'>none</option></select>`);
-        
+
                 let lengthOfChildUl = $(".displayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul').children('li').length;
                 console.log(lengthOfChildUl)
-                
+
                 for (let i = 0; i < lengthOfChildUl; i++) {
                     childLiData = $(".displayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul:first').children('li').eq(i).data("count");
                     childLiText = $(".displayMenu ul").find(`li[data-count='${selectDataNumber}']`).children('ul:first').children('li').eq(i).data("text");
-                    
+
                     $(".selectOptions select").last().append(`<option data-number=${childLiData}> ${childLiText}</option>`);
                 }
             }
@@ -135,25 +134,26 @@ $(document).ready(function () {
         $(`option[data-number="${dataCount}"]`).text(inputText);
         $('.displayMenu ul').find(`li[data-count='${dataCount}']`).find(">h6").text(inputText);
         $('.displayMenu ul').find(`li[data-count='${dataCount}']`).attr('data-text', `${inputText}`);
-        
+
         clearInput();
     });
 
     // click event when delete button pressed : This will delete the selected list items and its child list items 
     $(document).on('click', '.delete', function () {
-        
+
         dataCount = $(this).parent("li").attr('data-count');
         $(this).parent().remove();
         $(`select option[data-number="${dataCount}"]`).remove();
         $('select').trigger('change');
 
-        if($(".selectOptions select").last().find("option").length == 1 && $(".selectOptions select").length != 1){
+        if ($(".selectOptions select").last().find("option").length == 1 && $(".selectOptions select").length != 1) {
             $(".selectOptions select").last().remove()
         }
     });
 
-    function clearInput() {
-        // it will clear input text 
+    // This function will clear input text
+    function clearInput() { 
         $("input").val("");
     }
+
 });
