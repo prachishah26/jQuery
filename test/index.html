@@ -1,24 +1,43 @@
-<!doctype html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <title>appendTo demo</title>
+  <title>Face Mesh Implementation</title>
   <style>
-  #foo {
-    background: lightpink;
-  }
+    #video {
+      visibility: hidden;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+
+    #canvas {
+      transform: scaleX(-1);
+    }
   </style>
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
+
 <body>
- 
-<span>I have nothing more to say... </span>
- 
-<div id="foo">hello </div>
- 
-<script>
-$( "span" ).appendTo( "#foo" );
-</script>
- 
+  <div id="container">
+    <canvas id="canvas"></canvas>
+    <video id="video" autoplay width="640" height="640"></video>
+  </div>
 </body>
+
+<!-- Require the peer dependencies of face-landmarks-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+
+<!-- <script src="https://unpkg.com/@tensorflow/tfjs-core@2.4.0/dist/tf-core.js"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-converter@2.4.0/dist/tf-converter.js"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.4.0/dist/tf-backend-webgl.js"></script>
+<script
+  src="https://unpkg.com/@tensorflow-models/face-landmarks-detection@0.0.1/dist/face-landmarks-detection.js"></script> -->
+
+<!-- <script src="triangulation.js"></script> -->
+<script src="script.js" defer></script>
+
 </html>
