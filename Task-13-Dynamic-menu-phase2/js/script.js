@@ -142,7 +142,7 @@ $(document).ready(function () {
     // click event when delete button pressed : This will delete the selected list items and its child list items 
     $(document).on('click', '.delete', function () {
         
-        dataCount = $(this).closest("li").attr('data-count');
+        dataCount = $(this).parent("li").attr('data-count');
         $(this).parent().remove();
         $(`select option[data-number="${dataCount}"]`).remove();
         $('select').trigger('change');
