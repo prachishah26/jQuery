@@ -14,7 +14,8 @@ video.addEventListener('play', () => {
     const canvas = faceapi.createCanvasFromMedia(video)   //creating canvas
     document.body.append(canvas) //appending to html
     const displaySize = { width: video.width, height: video.height }
-    faceapi.matchDimensions(canvas, displaySize)   //to match the dimension
+    faceapi.matchDimensions(canvas, displaySize)   //to match the dimension of canvas and video
+
     setInterval(async () => {
         /*
         setInterval will update the landmarks and bounding box points after 100ms.
@@ -33,6 +34,7 @@ video.addEventListener('play', () => {
         const distanceBetweenEyes = faceapi.euclideanDistance([leftEyeXAxis, leftEyeYAxis], [rightEyeXAxis, rightEyeYAxis]);
 
         // console.log(distanceBetweenEyes);
+        
     }, 100)
 })
 
